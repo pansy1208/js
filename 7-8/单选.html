@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <div><input type="radio" name="language" checked id="english" value="en"/>英文</div>
+      <div><input type="radio" name="language" id="math" value="math"/>数学</div>
+    </form>
+    <script>
+      //获取所有input
+      //遍历所有input
+      //判断checked的值是否为true，声明checkradio变量接收checked为true的值
+      var ipt = document.querySelectorAll('input')
+      for(var i=0;i<ipt.length;i++){
+        if(ipt[i].checked){
+          console.log(ipt[i].value);
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .warp {
+        width: 300px;
+        height: 300px;
+        background-color: red;
+      }
+      .box {
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+      }
+      .child {
+        width: 100px;
+        height: 100px;
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="warp">
+      <div class="box">
+        <div class="child"></div>
+      </div>
+    </div>
+    <script>
+      var child = document.querySelector(".child");
+      var box = document.querySelector(".box");
+      var warp = document.querySelector(".warp");
+
+      child.addEventListener(
+        "click",
+        function (e) {
+          e.stopPropagation();
+          console.log("green");
+          console.log(e.target);
+          e.target.style.background = "red";
+        },
+        false
+      );
+      box.addEventListener(
+        "click",
+        function (e) {
+          //阻止事件冒泡 --->祖籍中的事件处理函数不会触发
+          e.stopPropagation();
+          console.log("pink");
+          console.log(e.target);
+          e.target.style.background = "orange";
+        },
+        false
+      );
+      warp.addEventListener(
+        "click",
+        function (e) {
+          e.stopPropagation();
+          console.log("red");
+          console.log(e.target);
+          e.target.style.background = "skyblue";
+        },
+        false
+      );
+    </script>
+  </body>
+</html>

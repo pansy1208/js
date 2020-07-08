@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 onclick="this.innerHTML='爬'">？？？</h1>
+    <h2 onclick="et(this)">!!!!</h2>
+    <h2 class="change">就这</h2>
+    <h2 class="txt">不会吧不会吧</h2>
+    <script>
+      //事件：作用：实现用户与浏览器的交互行为
+      //事件分类：键盘 鼠标 滚动  浏览器窗口 表单
+      //交互：一问一答 一行为 一响应 用户做出行为，浏览器进行响应
+      // 核心：事件对象 事件机制 事件流 ：事件句柄。监听事件...
+
+      //window.onload  当页面刚启动，进行初始化操作
+      // window.onload=function(){
+      //   //事件处理函数
+      //   alert("????")
+      // }
+      function et(el) {
+        el.innerHTML = "*****";
+      }
+
+      var txt = document.querySelector(".change");
+      //onclick 点击事件
+      txt.onclick = function () {
+        // 事件处理函数：浏览器对行为做出响应
+        this.innerHTML = "给爷爬";
+      };
+      //ie不支持
+      var text = document.querySelector(".txt");
+      text.addEventListener('click',function(){
+        this.innerHTML='^^^^^'
+      })
+    </script>
+  </body>
+</html>

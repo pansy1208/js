@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="warp">
+      <p>我是一个内容</p>
+      <p>我是一个内容</p>
+      <p>我是一个内容</p>
+      <p>我是一个内容</p>
+      <p>我是一个内容</p>
+    </div>
+    <script>
+      // var ps = document.querySelectorAll("p");
+      // for (let i = 0; i < ps.length; i++) {
+      //   ps[i].onclick = function (e) {
+      //     console.log(e.target);
+      //     e.target.style.color = "red";
+      //   };
+      // }
+
+      var warp = document.querySelector(".warp");
+      warp.addEventListener("click", function (e) {
+        // console.log(this);
+        // console.log(e.target);
+        //触发事件的目标元素是p，利用事件机制实现的事件委托
+        e.target.style.color = "red";
+      });
+      //事件委托：将事件委托给父元素
+      //通过事件机制实现事件委托
+    </script>
+  </body>
+</html>

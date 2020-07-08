@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button class="btn">点击</button>
+    <script>
+      //什么是事件对象？ 事件对象的作用是什么？ 事件对象是什么时候产生的？
+      //谷歌  触发事件的时候
+      //ie  是window.event 初始赋值 null
+      var btn = document.querySelector(".btn");
+      console.log(btn);
+      //事件对象作用：记录触发事件的事项，位置，哪一个按键等
+      btn.addEventListener("click", function (event) {
+        //event 事件对象，触发事件的时候传入的
+        //事件处理函数是异步程序：按需执行的
+        console.log(event);
+        console.log(event.type);
+
+        //获取触发事件的元素
+        var target = event.target;
+        console.log(target);
+      });
+      document.onkeydown = function (e) {
+        console.log(e);
+        console.log(e.keyCode);
+        if (e.keyCode === 32) {
+          console.log("我是空格");
+        }
+      };
+    </script>
+  </body>
+</html>

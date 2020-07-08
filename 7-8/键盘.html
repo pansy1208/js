@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        background-color: burlywood;
+      }
+
+      input {
+        outline: none;
+        border: 1px solid #ccc;
+        height: 35px;
+        padding-left: 15px;
+        padding-right: 15px;
+        width: 300px;
+        color: #ccc;
+      }
+
+      #add {
+        width: 55px;
+        height: 35px;
+        appearance: none;
+        border: none;
+        outline: none;
+      }
+
+      .head {
+        width: 500px;
+        margin: 10px auto;
+        display: flex;
+        justify-content: center;
+      }
+
+      main {
+        width: 500px;
+        background-color: #fff;
+        padding: 10px;
+        margin: 0 auto;
+      }
+
+      .content {
+        padding: 20px 45px 20px 75px;
+      }
+
+      .content li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px 0;
+        height: 35px;
+      }
+
+      .content .deletEl {
+        background-color: #ccc;
+        width: 45px;
+        height: 25px;
+        text-align: center;
+        line-height: 25px;
+        color: #fff;
+      }
+
+      li > input {
+        width: 30px;
+        height: 30px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <div class="head">
+        <input type="text" id="ipt" placeholder="" />
+        <div><button id="add">新增</button></div>
+      </div>
+      <div class="content">
+        <ul>
+          <li>
+            <span>我是内容</span>
+            <input type="checkbox" />
+            <div class="deletEl">删除</div>
+          </li>
+          <li>
+            <span>我是内容</span>
+            <input type="checkbox" />
+            <div class="deletEl">删除</div>
+          </li>
+        </ul>
+      </div>
+    </main>
+
+    <script>
+      //  获取一次
+      var ipt = document.querySelector("#ipt");
+      var addBtn = document.querySelector("#add");
+      var ulNode = document.querySelector("ul");
+
+      //  添加
+      ipt.addEventListener("keydown", function (e) {
+        if (e.keyCode === 13) {
+          var val = ipt.value;
+          var liNode = document.createElement("li");
+          var span = document.createElement("span");
+          var div = document.createElement("div");
+          var input = document.createElement("input");
+          input.type = "checkbox";
+          div.innerHTML = "删除";
+          div.className = "deletEl";
+          span.innerHTML = val;
+          liNode.appendChild(span);
+          liNode.appendChild(input);
+          liNode.appendChild(div);
+
+          //  把 li添加到ul上
+          ulNode.appendChild(liNode);
+          ipt.value = "";
+
+          deleteItem(); //  新增列表后，需要重新获取列表，这样才能删除
+          underLine();
+        }
+      });
+      addBtn.onclick = function () {
+        var val = ipt.value;
+        var liNode = document.createElement("li");
+        var span = document.createElement("span");
+        var div = document.createElement("div");
+        var input = document.createElement("input");
+        input.type = "checkbox";
+        div.innerHTML = "删除";
+        div.className = "deletEl";
+        span.innerHTML = val;
+        liNode.appendChild(span);
+        liNode.appendChild(input);
+        liNode.appendChild(div);
+
+        //  把 li添加到ul上
+        ulNode.appendChild(liNode);
+        ipt.value = "";
+
+        deleteItem(); //  新增列表后，需要重新获取列表，这样才能删除
+        underLine();
+      };
+
+      deleteItem(); //  初始化执行，初始化可以是实现删除列表
+      function deleteItem() {
+        //  删除
+        var deletNode = document.querySelectorAll("li>.deletEl");
+
+        for (var i = 0; i < deletNode.length; i++) {
+          (function (i) {
+            deletNode[i].onclick = function () {
+              var parent = deletNode[i].parentNode;
+              parent.remove();
+              // console.log(i);
+            };
+          })(i);
+        }
+      }
+
+      //  修改样式
+      underLine();
+
+      function underLine() {
+        var checkBox = document.querySelectorAll("li>input");
+
+        for (var i = 0; i < checkBox.length; i++) {
+          (function (i) {
+            checkBox[i].onclick = function () {
+              var sp = checkBox[i].previousElementSibling;
+              if (checkBox[i].checked) {
+                sp.style.textDecoration = "underline";
+              } else {
+                sp.style.textDecoration = "none";
+              }
+            };
+          })(i);
+        }
+      }
+    </script>
+  </body>
+</html>

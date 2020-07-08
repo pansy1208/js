@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <div>
+        <input type="checkbox" checked="checked" value="1" /><span
+          >选择的内容</span
+        >
+      </div>
+      <div>
+        <input type="checkbox" checked="checked" value="2" /><span
+          >选择的内容</span
+        >
+      </div>
+      <div>
+        <input type="checkbox" checked="checked" value="3" /><span
+          >选择的内容</span
+        >
+      </div>
+      <div>
+        <input type="checkbox" checked="checked" value="4" /><span
+          >选择的内容</span
+        >
+      </div>
+      <div><input type="checkbox" value="5" /><span>选择的内容</span></div>
+    </form>
+    <script>
+      //获取所有input=checkbox
+      //遍历input类数组：判断checked为true的元素
+      //声明已给checkArr=[] 因为多选所以用数组，把选中的内容元素添加到数组中
+      var ipts = document.querySelectorAll("input");
+      console.log(ipts);
+
+      var checkArr = [];
+      for (let i = 0; i < ipts.length; i++) {
+        if (ipts[i].checked) {
+          checkArr.push(
+            ipts[i].value
+            //el: ipts[i],
+            //value: ipts[i].value
+          );
+        }
+      }
+      console.log(checkArr);
+    </script>
+  </body>
+</html>

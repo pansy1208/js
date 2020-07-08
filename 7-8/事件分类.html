@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #wrap {
+        width: 300px;
+        height: 300px;
+        background-color: red;
+        transition: all 0.5s;
+      }
+      .active#wrap {
+        width: 100px;
+        height: 100px;
+        transition: all 0.5s;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" class="ipt">
+    <div id="wrap">
+      <div class="box"></div>
+    </div>
+    <script>
+      var wrap = document.getElementById("wrap");
+      var ipts=document.querySelector('.ipt')
+      // document.onmousemove = function () {
+      //   console.log("我在移动");
+      // };
+      //问题：document和wrap都监听了
+      // wrap.onmousemove=function(){
+      //   console.log('爬');
+      // }
+
+      // wrap.onmouseenter = function () {
+      //   console.log("移到wrap上");
+      //   wrap.className='wrap active'
+      // };
+      // wrap.onmouseleave = function () {
+      //   console.log("离开wrap");
+      //   wrap.className='wrap'
+      // };
+      // wrap.onmousedown = function () {
+      //   console.log("我点击了");
+      // };
+
+      //键盘事件
+      ipts.onkeydown = function () {
+        console.log("别按了");
+      };
+      // document.onkeypress=function(){
+      //   console.log("不要");
+      // }
+      ipts.onkeyup=function(){
+        console.log('抬起');
+      }
+    </script>
+  </body>
+</html>

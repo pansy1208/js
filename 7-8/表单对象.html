@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <input type="text" />
+      <input type="checkbox" />
+      <button>提交</button>
+      <select name="" id="">
+        <option value="cn">cn</option>
+        <option value="us">us</option>
+        <option value="en">en</option>
+        <option value="jp" selected>jp</option>
+      </select>
+    </form>
+    <script>
+      var formObj = document.querySelector("form");
+      console.dir(formObj);
+      console.log(formObj[0]);
+      console.log(formObj[1]);
+      console.log(formObj[2]);
+      formObj[0].focus();
+      formObj[1].checked = true;
+
+      var select = formObj[formObj.length - 1];
+      console.dir(select);
+      for (let i = 0; i < select.length; i++) {
+        if (select[i].selected) {
+          console.log(select[i].value);
+        }
+      }
+
+      function opText(num) {
+        if (arguments.length === 0) {
+          throw new Error(
+            'Failed to execute "getAttribute" on "Element": 1 argument required, but only 0 present. '
+          );
+        }
+        var res = null;
+        for (let i = 0; i < num.length; i++) {
+          if (num[i].selected) {
+            res = {
+              el: num[i],
+              value: num[i].value
+            };
+          }
+        }
+        return res;
+      }
+      var value = formObj[formObj.length - 1];
+      opText(value);
+    </script>
+  </body>
+</html>

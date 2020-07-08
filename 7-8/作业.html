@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .setCol {
+        margin-top: 50px;
+        margin-bottom: 20px;
+      }
+      .blueCol {
+        color: blue;
+        font-size: 20px;
+      }
+      .redCol {
+        color: red;
+        font-size: 30px;
+      }
+      .pinkCol {
+        color: pink;
+        font-size: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="change">
+      <button class="blue">蓝色</button>
+      <button class="red">红色</button>
+      <button class="pink">粉色</button>
+    </div>
+    <button class="setCol">设置颜色</button><br />
+    <span>就这？</span>
+
+    <script>
+      var change = document.querySelector(".change");
+      var color = document.querySelector(".setCol");
+      var text = document.querySelector("span");
+      change.addEventListener("click", function (e) {
+        text.className = "";
+        if (e.target.innerText == "蓝色") {
+          color.addEventListener("click", function () {
+            text.className = "blueCol"; 
+          });
+        } else if (e.target.innerText == "红色") {
+          color.addEventListener("click", function () {
+            text.className = "redCol";           
+          });
+        } else {
+          color.addEventListener("click", function () {
+            text.className = "pinkCol";
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

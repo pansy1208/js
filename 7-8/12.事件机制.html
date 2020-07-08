@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .warp {
+        width: 300px;
+        height: 300px;
+        background-color: red;
+      }
+      .box {
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+      }
+      .child {
+        width: 100px;
+        height: 100px;
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="warp">
+      <div class="box">
+        <div class="child"></div>
+      </div>
+    </div>
+    <script>
+      var child = document.querySelector(".child");
+      var box = document.querySelector(".box");
+      var warp = document.querySelector(".warp");
+
+      //事件冒泡
+      //在目标元素(el)上触发事件，如果el的祖籍元素绑定了相同事件，那么也会被触发，知道找到root根元素为止
+      //函数执行顺序：目标元素--->父元素--->祖籍元素
+
+      //addeventlistener()监听某个元素的事件
+      //参一：事件类型
+      //参二：事件处理函数
+      //参三：事件机制 冒泡或不同 默认值 false
+      // child.addEventListener(
+      //   "click",
+      //   function () {
+      //     console.log("green");
+      //   },
+      //   false
+      // );
+      // box.addEventListener(
+      //   "click",
+      //   function () {
+      //     console.log("pink");
+      //   },
+      //   false
+      // );
+      // warp.addEventListener(
+      //   "click",
+      //   function () {
+      //     console.log("red");
+      //   },
+      //   false
+      // );
+
+      //捕获行为
+      child.addEventListener(
+        "click",
+        function () {
+          console.log("green");
+        },
+        true
+      );
+      box.addEventListener(
+        "click",
+        function () {
+          console.log("pink");
+        },
+        true
+      );
+      warp.addEventListener(
+        "click",
+        function () {
+          console.log("red");
+        },
+        true
+      );
+
+      //事件：无论是否处理(绑定事件处理函数)，都只是存在的
+      //用户的行为：都会具体到某一个元素上--->目标元素
+      //捕获：多目标元素同一个行为：祖籍元素是否处理了。如果处理：从上往下顺序 依次触发祖籍元素中的事件处理函数：最后 触发目标元素事件处理函数
+    </script>
+  </body>
+</html>
