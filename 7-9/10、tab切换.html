@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .wrap {
+        position: absolute;
+        left: 50%;
+        top: 50px;
+        transform: translateX(-50%);
+      }
+      .control {
+        width: 300px;
+        height: 45px;
+        display: flex;
+      }
+      .control-item {
+        width: 100px;
+        height: 45px;
+        border: 1px solid red;
+        text-align: center;
+        line-height: 45px;
+      }
+      .content {
+        width: 300px;
+        height: 200px;
+        background-color: skyblue;
+        font-size: 20px;
+        font-weight: 700;
+      }
+      .tab {
+        width: 100%;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        font-weight: 700;
+        display: none;
+      }
+      .show {
+        display: block;
+      }
+      .active {
+        background-color: orange;
+        color: #f1f1f1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="control">
+        <div class="control-item active">选项一</div>
+        <div class="control-item">选项二</div>
+        <div class="control-item">选项三</div>
+      </div>
+      <div class="content">
+        <div class="tab show">就这？</div>
+        <div class="tab">不会吧，不会吧，不会吧</div>
+        <div class="tab">可别恶心我了</div>
+      </div>
+    </div>
+    <script>
+      var control = document.querySelectorAll(".control-item");
+      var tab = document.querySelectorAll(".tab");
+      control = [...control];
+      tab = [...tab];
+      control.forEach(function (item, index) {
+        item.addEventListener("click", function (e) {
+          control.forEach(function (item, index) {
+            item.className = "control-item";
+            tab[index].className = "tab";
+          });
+          this.className = "control-item active";
+          tab[index].className = "tab show";
+        });
+      });
+    </script>
+  </body>
+</html>

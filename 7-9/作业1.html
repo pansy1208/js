@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .star-level {
+        width: 50px;
+        height: 50px;
+        border: 1px solid black;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 10px;
+      }
+      .level {
+        display: none;
+      }
+      .active {
+        background-color: skyblue;
+      }
+      .click {
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="star">
+      <div class="star-level"></div>
+      <div class="star-level"></div>
+      <div class="star-level"></div>
+      <div class="star-level"></div>
+      <div class="star-level"></div>
+      <div class="star-level"></div>
+    </div>
+    <div class="content">
+      <div class="level">1</div>
+      <div class="level">2</div>
+      <div class="level">3</div>
+      <div class="level">4</div>
+      <div class="level">5</div>
+      <div class="level">6</div>
+    </div>
+
+    <script>
+      var starLevel = document.querySelectorAll(".star-level");
+      var level = document.querySelectorAll(".level");
+      starLevel = [...starLevel];
+      level = [...level];
+      starLevel.forEach(function (item, index) {
+        item.addEventListener("click", function () {
+          level.forEach(function (item) {
+            item.style.display = "none";
+          });
+          level[index].style.display = "block";
+          for (var i = 0; i <= index; i++) {
+            starLevel[i].classList.add("active");
+            starLevel[i].classList.add("click");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

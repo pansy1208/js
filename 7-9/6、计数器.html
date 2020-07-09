@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="reduce">-</button>
+    <span>0</span>
+    <button id="add">+</button>
+
+    <script>
+      var add = document.querySelector("#add");
+      var num = document.querySelector("span");
+      var reduce = document.querySelector("#reduce");
+      var count = 0;
+
+      add.addEventListener("click", function () {
+        ++count;
+        if (count > 3) {
+          count = 0;
+        }
+        num.innerHTML = count;
+      });
+      reduce.addEventListener("click", function () {
+        if (count <= 0) {
+          reduce.style.disabled = true;
+        }
+        --count;
+        num.innerHTML = count;
+      });
+    </script>
+  </body>
+</html>

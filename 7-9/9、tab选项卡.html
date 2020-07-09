@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>点击内容</h2>
+    <h2>点击内容</h2>
+    <h2>点击内容</h2>
+
+    <script>
+      var h2 = document.querySelectorAll("h2");
+      for (let i = 0; i < h2.length; i++) {
+        (function () {
+          var x = i;
+          h2[i].onclick = function () {
+            alert(x);
+          };
+        })();
+      }
+    </script>
+  </body>
+</html>

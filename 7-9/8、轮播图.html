@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .wrap {
+        width: 500px;
+        height: 300px;
+        position: relative;
+        margin: 50px auto;
+      }
+      .wrap img {
+        width: 500px;
+        height: 300px;
+        position: absolute;
+        display: none;
+      }
+      .show {
+        display: block !important;
+      }
+      .control-btn {
+        width: 35px;
+        height: 60px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        text-align: center;
+        line-height: 60px;
+        position: absolute;
+        z-index: 999;
+        transform: translateY(-50%);
+        top: 50%;
+      }
+      .control-btn.left {
+        left: 0px;
+      }
+      .control-btn.right {
+        right: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <img src="./img/1.jpg" alt="" class="show" />
+      <img src="./img/2.jpg" alt="" />
+      <img src="./img/3.jpg" alt="" />
+      <div class="control">
+        <div class="control-btn left"><</div>
+        <div class="control-btn right">></div>
+      </div>
+    </div>
+    <script>
+      //初始化：页面只显示一个图片
+      //通过.show类名方式控制哪张图片显示
+      //声明一个变量 index 表示当前显示的元素
+      var left = document.querySelector(".left");
+      var right = document.querySelector(".right");
+      var img = document.querySelectorAll("img");
+      console.log(img);
+
+      var index = 0;
+      left.addEventListener("click", function () {
+        for (let i = 0; i < img.length; i++) {
+          img[i].className = "";
+        }
+        --index;
+        if (index < 0) {
+          index = 2;
+        }
+        img[index].className = "show";
+      });
+      right.addEventListener("click", function () {
+        for (let i = 0; i < img.length; i++) {
+          img[i].className = "";
+        }
+        ++index;
+        if (index > 2) {
+          index = 0;
+        }
+        img[index].className = "show";
+      });
+    </script>
+  </body>
+</html>

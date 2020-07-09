@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .wrap {
+        width: 500px;
+        height: 300px;
+        position: relative;
+        margin: 50px auto;
+      }
+      .wrap img {
+        width: 500px;
+        height: 300px;
+        position: absolute;
+        display: none;
+      }
+      .show {
+        display: block !important;
+      }
+      .control {
+        width: 140px;
+        height: 45px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: absolute;
+        left: 50%;
+        bottom: 20px;
+        transform: translateX(-50%);
+      }
+      .control-item {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+      .active {
+        background-color: #fff;
+      }
+      .control-btn {
+        width: 35px;
+        height: 60px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        text-align: center;
+        line-height: 60px;
+        position: absolute;
+        z-index: 999;
+        transform: translateY(-50%);
+        top: 50%;
+      }
+      .control-btn.left {
+        left: 0px;
+      }
+      .control-btn.right {
+        right: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="view">
+        <img src="img/1.jpg" class="show" />
+        <img src="img/2.jpg" />
+        <img src="img/3.jpg" />
+      </div>
+      <div class="control">
+        <div class="control-item active"></div>
+        <div class="control-item"></div>
+        <div class="control-item"></div>
+      </div>
+      <div class="control-lr">
+        <div class="control-btn left"><</div>
+        <div class="control-btn right">></div>
+      </div>
+    </div>
+    <script>
+      //1：第一步：确认效果初始化 1.html+css 2.js方式完成初始化样式
+      //2: 第二步：分析用户行为，--->给什么元素绑定什么事件？
+      //3: 第三步：事件（行为）发生，哪一个html元素 发生css的动态版画
+      //完成动态交互：可能需要状态 数据，声明变量然后代表内容
+      //注意：表示状态变量：计数器，true/false
+      //作用于问题，改变量需要给哪些函数使用---> 所有使用地方 都能访问到的一个公共的作用域
+      //变量污染问题。污染--->分开声明。闭包解决污染
+      var change = document.querySelectorAll(".control-item");
+      var view = document.querySelectorAll("img");
+      var left = document.querySelector(".left");
+      var right = document.querySelector(".right");
+      var index = 0;
+      for (let i = 0; i < change.length; i++) {
+        (function (i) {
+          index = i;
+          change[i].addEventListener("click", function () {
+            index = i;
+            for (let j = 0; j < change.length; j++) {
+              change[j].classList.remove("active");
+              view[j].classList.remove("show");
+            }
+            change[i].classList.add("active");
+            view[i].classList.add("show");
+          });
+        })(i);
+      }
+
+      left.addEventListener("click", function () {
+        for (let i = 0; i < view.length; i++) {
+          view[i].className = "";
+          change[i].classList.remove('active')
+        }
+        --index;
+        if (index < 0) {
+          index = 2;
+        }
+        view[index].className = "show";
+        change[index].classList.add("active");
+      });
+      right.addEventListener("click", function () {
+        for (let i = 0; i < view.length; i++) {
+          view[i].className = "";
+          change[i].classList.remove('active')
+        }
+        ++index;
+        if (index > 2) {
+          index = 0;
+        }
+        view[index].className = "show";
+
+        // 小圆点切换
+
+        change[index].classList.add("active");
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+      .hidden {
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        position: absolute;
+        top: 0;
+      }
+      .view {
+        width: 300px;
+        height: 200px;
+        background-color: pink;
+        border: 1px solid black;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+      }
+      .close {
+        width: 20px;
+        height: 20px;
+        margin-left: 280px;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="open">爬</button>
+    <div class="fa">
+      <div class="view">
+        <button class="close">×</button>
+      </div>
+    </div>
+
+    <script>
+      var btn = document.querySelector(".open");
+      var div = document.querySelector(".view");
+      var cls = document.querySelector(".close");
+      var fa = document.querySelector(".fa");
+      btn.addEventListener("click", function () {
+        div.style.display = "block";
+        fa.classList.add("hidden");
+      });
+      cls.addEventListener("click", function () {
+        div.style.display = "none";
+        fa.classList.remove("hidden");
+      });
+    </script>
+  </body>
+</html>

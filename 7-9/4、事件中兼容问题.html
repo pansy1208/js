@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn">点击</button>
+
+    <script>
+      var btn = document.querySelector("#btn");
+      // btn.addEventListener("click", function (e) {
+      // 1、事件兼容性
+      // var event = e || window.event; //解决兼容性问题
+      // console.log(e);
+      // console.log(event);
+      // });
+      // 2、阻止默认行为
+      // function preventDefault(e) {
+      //   var e = e || window.event;
+      //   if (event.preventDefault) {
+      //     event.preventDefault();
+      //   } else {
+      //     event.returnValue = false;
+      //   }
+      // }
+
+      // btn.onclick = function (e) {
+      //   preventDefault(e);
+      // };
+
+      //3、阻止事件冒泡
+      // function stopPropagation(e) {
+      //   var event = e || window.event;
+      //   if (event.stopPropagation) {
+      //     event.stopPropagation();
+      //   } else {
+      //     event.cancelBubble = true;
+      //   }
+      // }
+
+      //js 如何解决兼容性问题
+
+      //4、事件监听的封装
+      // function eventListener(el, event, callback, type) {
+      //   if (el.addEventListener) {
+      //     el.addEventListener(event, callback, type);
+      //   } else {
+      //     el.detachEvent(event, callback);
+      //   }
+      // }
+      // eventListener(
+      //   btn,
+      //   "click",
+      //   function () {
+      //     console.log("我被执行了");
+      //   },
+      //   false
+      // );
+
+      //5、删除事件句柄的兼容性处理
+      function removeEvent(el, eventName, funName) {
+        if (el.nodeType !== 1) {
+          throw new Error('fail: "Element":"type is error"');
+        }
+        if (typeof eventName !== "string") {
+          throw new Error('fail: "eventName":"type must be string"');
+        }
+        if (typeof funName !== "function") {
+          throw new Error('fail: "funName":"type must be function"');
+        }
+        if (arguments.length === 0) {
+          return null;
+        }
+        if (el.removeEventListener) {
+          el.removeEventListener(eventName, funName);
+        } else {
+          el.detachEvent(eventName, funName);
+        }
+      }
+    </script>
+  </body>
+</html>

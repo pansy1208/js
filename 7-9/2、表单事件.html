@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="">
+      <label for="用户名">
+        <input type="text" />
+      </label>
+      <label for="密码">
+        <input type="password" />
+      </label>
+      <button>提交</button>
+    </form>
+
+    <div>
+      <input type="text" id="ipt" />
+      <h1></h1>
+    </div>
+
+    <div><input type="checkbox" id="check" />选择</div>
+    <script>
+      var form = document.querySelector("form");
+      var btn = document.querySelector("button");
+      // form.onsubmit = function (e) {
+      //   e.preventDefault();
+      //   console.log(e, "提交成功");
+      //   console.log(form[0]);
+      // };
+
+      // btn.addEventListener("click", function (e) {
+      //   e.preventDefault();
+      //   console.log("1111");
+      // });
+
+      // var ipt = document.querySelector("#ipt");
+      // var h1 = document.querySelector("h1");
+      // 输入框事件，实时监听输入框的动态
+      // ipt.addEventListener("input", function () {
+      //   h1.innerHTML = ipt.value;
+      // });
+
+      //给输入框绑定change事件
+      //内容变化并且失去焦点是触发
+      // var ipt = document.querySelector("#ipt");
+      // ipt.addEventListener("change", function (e) {
+      //   console.log(e.target.value);
+      // });
+
+      //change事件：当多选框发生改变触发
+      // var check = document.querySelector("#check");
+      // check.addEventListener("change", function (e) {
+      //   console.log("发生改变");
+      //   console.log(e.target.checked);
+      // });
+
+      //焦点事件
+      var ipt = document.querySelector("#ipt");
+      ipt.addEventListener("focus", function () {
+        console.log("获取焦点");
+      });
+      ipt.addEventListener("blur", function () {
+        console.log("失去焦点");
+      });
+    </script>
+  </body>
+</html>
