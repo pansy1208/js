@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      p {
+        padding: 150px 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <p>就这？？</p>
+    <p>就这？？</p>
+    <p>就这？？</p>
+    <p>就这？？</p>
+    <p>就这？？</p>
+    <p>就这？？</p>
+    <p>就这？？</p>
+    <p>就这？？</p>
+    <p>就这？？</p>
+    <p>就这？？</p>
+    <script>
+      //滚动条有关
+      //pc 滚动加载更多。楼层滚动，滚动联动...
+      //移动端：下拉刷新， 上拉加载更多，滚动联动...
+      window.onscroll = function (e) {
+        //获取滚动条距离视图窗口顶端的高度
+        var h = document.documentElement.scrollTop || document.body.scrollTop;
+        console.log(h);
+      };
+      //1：获取滚动条滚动高度
+      //2：指定滚动条滚动到某一高度
+      //3：结合动画实现一些效果
+    </script>
+  </body>
+</html>

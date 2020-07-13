@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      header {
+        height: 300px;
+        background-color: skyblue;
+      }
+      ul > li {
+        list-style: none;
+        display: inline-block;
+        height: 50px;
+      }
+      li > a {
+        text-decoration: none;
+        padding: 15px;
+        color: #f1f1f1;
+        display: inline-block;
+      }
+      nav {
+        width: 100%;
+        background-color: #000000;
+      }
+      .content p {
+        height: 150px;
+      }
+      .fixed {
+        position: fixed;
+        top: 0;
+        overflow: hidden;
+        animation: ani 0.5s linear;
+      }
+      @keyframes ani{
+        from{
+          height: 0;
+        }to{
+          height: 50px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header></header>
+    <nav>
+      <ul>
+        <li>
+          <a href="">导航001</a>
+          <a href="">导航001</a>
+          <a href="">导航001</a>
+          <a href="">导航001</a>
+          <a href="">导航001</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="content">
+      <p>不会吧，不会吧，不会吧</p>
+      <p>不会吧，不会吧，不会吧</p>
+      <p>不会吧，不会吧，不会吧</p>
+      <p>不会吧，不会吧，不会吧</p>
+      <p>不会吧，不会吧，不会吧</p>
+      <p>不会吧，不会吧，不会吧</p>
+      <p>不会吧，不会吧，不会吧</p>
+      <p>不会吧，不会吧，不会吧</p>
+      <p>不会吧，不会吧，不会吧</p>
+      <p>不会吧，不会吧，不会吧</p>
+      <p>不会吧，不会吧，不会吧</p>
+      <p>不会吧，不会吧，不会吧</p>
+      <p>不会吧，不会吧，不会吧</p>
+      <p>不会吧，不会吧，不会吧</p>
+      <p>不会吧，不会吧，不会吧</p>
+      <p>不会吧，不会吧，不会吧</p>
+      <p>不会吧，不会吧，不会吧</p>
+      <p>不会吧，不会吧，不会吧</p>
+      <p>不会吧，不会吧，不会吧</p>
+      <p>不会吧，不会吧，不会吧</p>
+    </div>
+    <script>
+      var nav = document.querySelector("nav");
+      window.onscroll = function () {
+        var h = document.documentElement.scrollTop;
+        if (h > 360) {
+          nav.classList.add('fixed');
+        }else{
+          nav.classList.remove('fixed')
+        }
+      };
+    </script>
+  </body>
+</html>

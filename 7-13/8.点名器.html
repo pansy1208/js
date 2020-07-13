@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 200px;
+        height: 70px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        text-align: center;
+        line-height: 70px;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">点名</div>
+    <button class="start">开始</button>
+    <button class="end">暂停</button>
+    <script>
+      var names = ["伊索亚尔", "三玖", "艾斯德斯", "未来", "雏田", "三色堇"];
+      var box = document.querySelector(".box");
+      var start = document.querySelector(".start");
+      var end = document.querySelector(".end");
+      var timer;
+      var flag = true; //开关 防抖
+      start.addEventListener("click", function () {
+        //用户多次点击开始，以第一次为主
+        if (flag) {
+          //多次点击保证timer只是赋值一次
+          timer = setInterval(function () {
+            var random = Math.floor(Math.random() * names.length);
+            box.innerHTML = names[random];
+          }, 80);
+        }
+        flag = false;
+        
+        // clearInterval(timer);
+        // timer = setInterval(function () {
+        //   var random = Math.floor(Math.random() * names.length);
+        //   box.innerHTML = names[random];
+        // }, 10);
+        console.log(timer);
+      });
+      end.addEventListener("click", function () {
+        clearInterval(timer);
+        flag = true;
+      });
+
+      //bug 点击多次不能清除timer
+      //网络性能优化
+      //防抖 节流
+      //防抖：多次点击按钮以第一次为主 ----->timer 触底...
+      //节流：多次点击按钮以最后一次为主 ----->购物车计数器
+    </script>
+  </body>
+</html>

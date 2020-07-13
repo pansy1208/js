@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: aqua;
+        position: relative;
+        left: 0;
+        top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <script>
+      var box = document.querySelector(".box");
+      //通过获取鼠标移动距离，将距离赋值给元素的left top 属性，实现移动效果
+      box.addEventListener("click", function (event) {
+        var x = event.offsetX;
+        var y = event.offsetY;
+        document.addEventListener("mousemove", function (e) {
+          box.style.left = e.clientX - 50 + "px";
+          box.style.top = e.clientY - 50 + "px";
+          //bug：默认body 8px 导致鼠标不在元素上
+        });
+      });
+    </script>
+  </body>
+</html>

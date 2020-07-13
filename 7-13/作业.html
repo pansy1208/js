@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .fa {
+        width: 300px;
+        height: 100px;
+        background-color: pink;
+        padding-top: 50px;
+        padding-left: 30px;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="fa">
+      <div>
+        <label for="">用户名：</label>
+        <input type="text" />
+      </div>
+      <div>
+        <label for="">密&nbsp;&nbsp;&nbsp;码：</label>
+        <input type="password" />
+      </div>
+    </div>
+    <script>
+      var fa = document.querySelector(".fa");
+      fa.addEventListener("mousedown", function (event) {
+        var x = event.offsetX;
+        var y = event.offsetY;
+        // document.addEventListener("mousemove", function (e) {
+        //   fa.style.left = e.pageX - x + "px";
+        //   fa.style.top = e.pageY - y + "px";
+        // });
+        document.onmousemove = function (e) {
+          fa.style.left = e.pageX - x + "px";
+          fa.style.top = e.pageY - y + "px";
+        };
+      });
+      fa.addEventListener("mouseup", function () {
+        document.onmousemove = null;
+      });
+    </script>
+  </body>
+</html>

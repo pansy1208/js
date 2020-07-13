@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      p {
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <p>??????</p>
+      <p>??????</p>
+      <p>??????</p>
+      <p>??????</p>
+      <p>??????</p>
+      <p>??????</p>
+      <p>??????</p>
+      <p>??????</p>
+      <p>??????</p>
+      <p>??????</p>
+    </div>
+    <script>
+      //触底
+      //页面高度=<视图窗口高度+滚动条滚动高度  到底了
+      var wrap = document.querySelector(".wrap");
+
+      window.onscroll = function () {
+        var H = innerHeight;
+        var scrollTop =
+          document.documentElement.scrollTop || document.body.scrollTop;
+        var pageH = document.body.offsetHeight;
+        var data = ["java", "c++", "c", "h5", "c3", "js", "python"];
+        if (H + scrollTop > pageH) {
+          // alert('???')
+          setTimeout(function () {
+            for (let i = 0; i < data.length; i++) {
+              var p = document.createElement("p");
+              p.innerHTML = data[i];
+              wrap.appendChild(p);
+            }
+          }, 1000);
+        }
+      };
+    </script>
+  </body>
+</html>

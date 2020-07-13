@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="">
+      <div>
+        <input type="checkbox" class="all" />全选
+        <input type="checkbox" class="reverse" />反选
+      </div>
+      <div><input type="checkbox" class="check" /><span>选项1</span></div>
+      <div><input type="checkbox" class="check" /><span>选项1</span></div>
+      <div><input type="checkbox" class="check" /><span>选项1</span></div>
+      <div><input type="checkbox" class="check" /><span>选项1</span></div>
+      <div><input type="checkbox" class="check" /><span>选项1</span></div>
+    </form>
+    <script>
+      var all = document.querySelector(".all");
+      var ipt = document.querySelectorAll(".check");
+      var reverse = document.querySelector(".reverse");
+      ipt = [...ipt];
+      ipt.forEach(function (item) {
+        item.addEventListener("change", function () {
+          if (item.checked) {
+            item.nextElementSibling.style.color = "pink";
+          } else {
+            item.nextElementSibling.style.color = "";
+          }
+          isChecked();
+        });
+      });
+      all.addEventListener("change", function () {
+        ipt.forEach(function (item) {
+          if (all.checked) {
+            item.checked = true;
+            item.nextElementSibling.style.color = "pink";
+          } else {
+            item.checked = false;
+            item.nextElementSibling.style.color = "pink";
+          }
+        });
+      });
+
+      //反选
+      reverse.addEventListener("change", function () {
+        isRevers();
+        isChecked();
+      });
+      function isChecked() {
+        for (let i = 0; i < ipt.length; i++) {
+          if (ipt[i].checked == false) {
+            all.checked = false;
+            break; //性能优化
+          } else {
+            all.checked = true;
+          }
+        }
+      }
+      function isRevers() {
+        ipt.forEach(function (item) {
+          item.checked = !item.checked;
+          if (item.checked) {
+            item.nextElementSibling.style.color = "pink";
+          } else {
+            item.nextElementSibling.style.color = "";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

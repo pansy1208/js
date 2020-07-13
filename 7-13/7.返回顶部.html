@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* .box {
+        height: 100px;
+        background-color: red;
+        overflow: auto;
+      } */
+
+      p {
+        height: 150px;
+      }
+      button {
+        display: none;
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div class="box">
+      <p>??????</p>
+      <p>??????</p>
+      <p>??????</p>
+      <p>??????</p>
+      <p>??????</p>
+      <p>??????</p>
+      <p>??????</p>
+      <p>??????</p>
+      <p>??????</p>
+      <p>??????</p>
+    </div> -->
+
+    <button>返回</button>
+    <p>??????</p>
+    <p>??????</p>
+    <p>??????</p>
+    <p>??????</p>
+    <p>??????</p>
+    <p>??????</p>
+    <p>??????</p>
+    <p>??????</p>
+    <p>??????</p>
+    <p>??????</p>
+
+    <script>
+      // var box = document.querySelector(".box");
+      // box.onscroll=function(){
+      //   console.log("????");
+      // }
+
+      //scrollTo()指定滚动条滚动到某一位置
+      //参数 对象 top 纵向滚动 left 横向滚动
+      // window.scrollTo({
+      //   top: 200,
+      // });
+
+      // 如何初始化指定滚动条滚动到某一位置;
+      var btn = document.querySelector("button");
+      window.onscroll = function () {
+        var top = document.documentElement.scrollTop;
+        var H = innerHeight;
+        console.log(H);
+        //scrollHeight = offsetHeight 获取滚动条元素的高度
+        var pageY =
+          document.documentElement.scrollHeight || document.body.scrollHeight;
+        if (top > 500) {
+          btn.style.display = "block";
+        } else {
+          btn.style.display = "";
+        }
+      };
+      //点击返回顶部
+      // btn.addEventListener("click", function () {
+      //   window.scrollTo({
+      //     top: 0,
+      //   });
+      // });
+
+      //动画返回顶部
+      btn.addEventListener("click", function () {
+        var top = document.documentElement.scrollTop;
+        var timer = setInterval(() => {
+          top -= 20;
+          window.scrollTo({
+            top: top,
+          });
+          if (top <= 0) {
+            clearInterval(timer);
+          }
+        }, 10);
+      });
+    </script>
+  </body>
+</html>
