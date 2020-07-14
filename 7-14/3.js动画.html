@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: skyblue;
+      }
+      /* .box:hover {
+        opacity: 0.4;
+        transition: all 0.5s;
+      } */
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <script>
+      var box = document.querySelector(".box");
+      // box.onmouseover = function () {
+      //   box.style.opacity = 0.3;
+      //   box.style.transition = "all 0.5s";
+      // };
+
+      //方式二
+      //1知道 哪一个css属性 值变化是需要动画
+      //2：知道动画执行时间是多少？
+      //3:css值每次递增或递减多少？单次执行的时间是多少 找到出口
+      box.onmouseover = function () {
+        var opacity = 1;
+        var timer = setInterval(function () {
+          opacity -= 0.01;
+          box.style.opacity = opacity;
+          if (opacity <= 0.3) {
+            box.style.opacity = 0.3;
+            clearInterval(timer);
+          }
+        }, 100);
+      };
+
+    </script>
+  </body>
+</html>

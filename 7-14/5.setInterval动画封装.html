@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        opacity: 0.8;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <script>
+      function getStyle(el, str) {
+        var res;
+        if (el.currentStyle) {
+          res = el.currentStyle[str];
+        } else {
+          res = getComputedStyle(el, null)[str];
+        }
+        return res;
+      }
+      var box = document.querySelector(".box");
+
+      ani(box, "width", 200, 0.5);
+      ani(box, "opacity", 0.3, 0.5);
+      function ani(el, str, end, time) {
+        var start = getStyle(el, str);
+        start = parseInt(start);
+        var s = end - start;
+        time = time * 1000;
+        var timer = setInterval(function () {
+          // time/16.7 fun执行的次数
+          start += s / (time / 16.7);
+
+          if (s > 0) {
+            if (start >= end) {
+              str === "opacity" || str === "zIndex"
+                ? (el.style[str] = end)
+                : (el.style[str] = end + "px");
+              clearInterval(timer);
+            }
+          } else {
+            if (start <= end) {
+              str === "opacity" || str === "zIndex"
+                ? (el.style[str] = end)
+                : (el.style[str] = end + "px");
+              clearInterval(timer);
+            }
+          }
+
+          if (str == "opacity" || str == "zIndex") {
+            el.style[str] = start;
+          } else {
+            el.style[str] = start + "px";
+          }
+         
+        }, 16.7); //浏览器刷新时间是16.7ms
+      }
+      
+    </script>
+  </body>
+</html>

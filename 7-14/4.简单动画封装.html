@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: skyblue;
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <script>
+      var box = document.querySelector(".box");
+      box.addEventListener("click", function () {
+        clearInterval(timer);
+        var timer = setInterval(function () {
+          var step = box.offsetLeft + 10;
+          if (step > 800) {
+            clearInterval(timer);
+          }
+          box.style.left = step + "px";
+        }, 50);
+      });
+
+      // function animate(obj, target, callback) {
+      //   clearInterval(obj.timer);
+      //   obj.timer = setInterval(function () {
+      //     var step = (target - obj.offsetLeft) / 10;
+      //     step = step > 0 ? Math.ceil(step) : Math.floor(step);
+      //     if (step > target) {
+      //       clearInterval(obj.timer);
+      //       if (callback) {
+      //         callback();
+      //       }
+      //     }
+      //     obj.style.left = obj.offsetLeft + step + "px";
+      //   }, 15);
+      // }
+
+      function $animate(el, styleus, time) {
+        for (var x in styleus) {
+          //通过js获取元素变化前的值
+          var a = getComputedStyle(el, null)[x];
+          //css变化后的值
+          var b = styleus[x];
+          el.style[x] = b;
+          el.style.transition = "all " + time;
+        }
+      }
+      box.onclick = function () {
+        $animate(box, { opacity: 0.5 }, "0.5s");
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <select name="" id="shen">
+      <option>请选择</option>
+    </select>
+    <select name="" id="shi">
+      <option>请选择</option>
+    </select>
+    <script src="area.js"></script>
+    <script>
+      var sel = document.querySelector("#shen");
+      var sels = document.querySelector("#shi");
+      for (const k in area) {
+        var option = document.createElement("option");
+        option.innerHTML = k;
+        sel.appendChild(option);
+      }
+
+      sel.addEventListener("change", function () {
+        sels.innerHTML = "";
+        var city = sel.value;
+        for (const k in area) {
+          if (k == city) {
+            for (const k1 in area[k][0]) {
+              var option = document.createElement("option");
+              option.innerHTML = k1;
+              sels.appendChild(option);
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
