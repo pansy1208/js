@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- bom 窗口对象 
+    window 
+    ifram 是窗口 -->
+    <!-- a:默认事件：跳转链接 并进行页面刷新
+    通过修改URL地址完成链接跳转 -->
+    <a href="./a.html?name='pansy'&age='18'">next</a>
+    <button>????</button>
+    <script>
+      var a = document.querySelector("a");
+      //url 地址
+      //如何通过结束获取URL地址信息？location
+      // console.log(location.href);
+      // console.log(location.origin);
+      // console.log(location.pathname);
+      var urlObj = {
+        origin: "http://",
+        ip: "www.baidu.com",
+        params: {
+          name: "pansy",
+          age: 18,
+        },
+      };
+      document.querySelector("button").onclick = function () {
+        location.href = "./a.html";//重定向
+      };
+
+      //window是最大对象
+      //不能通过window直接获取iframe窗口中嵌入的页面内容
+    </script>
+  </body>
+</html>

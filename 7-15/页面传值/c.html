@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>不会吧</button>
+    <script>
+      var obj = {
+        namelist: ["pansy", "xiaoge"],
+        hobby: "null",
+      };
+      var btn = document.querySelector("button");
+      btn.addEventListener("click", function () {
+        for (const k in obj) {
+          localStorage.setItem(k, obj[k]);
+        }
+        location.href = "./d.html";
+      });
+    </script>
+  </body>
+</html>

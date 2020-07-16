@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .box {
+        width: 721px;
+        height: 455px;
+        background-color: pink;
+        position: relative;
+        left: 300px;
+        top: 150px;
+        overflow: hidden;
+      }
+      li {
+        list-style: none;
+        float: left;
+      }
+      a {
+        text-decoration: none;
+      }
+      ul {
+        width: 600%;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .arrow_l,
+      .arrow_r {
+        width: 25px;
+        height: 40px;
+        display: inline-block;
+        text-align: center;
+        line-height: 40px;
+        background-color: black;
+        opacity: 0.5;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 999;
+        color: #fff;
+        font-size: 18px;
+        display: none;
+      }
+      .arrow_r {
+        right: 0;
+      }
+      .circle {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .circle li {
+        width: 15px;
+        height: 15px;
+        background-color: #fff;
+        opacity: 0.5;
+        float: left;
+        border-radius: 50%;
+        margin-right: 3px;
+      }
+      .current {
+        background-color: black !important;
+      }
+    </style>
+    <script src="animate.js"></script>
+  </head>
+  <body>
+    <div class="box">
+      <!-- 左右按钮 -->
+      <a href="javascript:;" class="arrow_l"><</a>
+      <a href="javascript:;" class="arrow_r">></a>
+      <!-- 轮播图 -->
+      <ul>
+        <li>
+          <a href="#"><img src="img/focus.jpg" alt="" /></a>
+        </li>
+        <li>
+          <a href="#"><img src="img/focus1.jpg" alt="" /></a>
+        </li>
+        <li>
+          <a href="#"><img src="img/focus2.jpg" alt="" /></a>
+        </li>
+        <li>
+          <a href="#"><img src="img/focus3.jpg" alt="" /></a>
+        </li>
+        <li>
+          <a href="#"><img src="img/focus.jpg" alt="" /></a>
+        </li>
+      </ul>
+      <!-- 小圆圈 -->
+      <ol class="circle">
+        <li class="wrap current"></li>
+        <li class="wrap"></li>
+        <li class="wrap"></li>
+        <li class="wrap"></li>
+      </ol>
+    </div>
+
+    <script>
+      window.addEventListener("load", function () {
+        var arrow_l = document.querySelector(".arrow_l");
+        var arrow_r = document.querySelector(".arrow_r");
+        var box = document.querySelector(".box");
+        var ul = document.querySelector("ul");
+        var wrap = document.querySelectorAll(".wrap");
+        wrap = [...wrap];
+        var boxWidth = box.offsetWidth;
+        var num = 0;
+        var circle = 0;
+        var flag = true;
+        
+        box.addEventListener("mouseleave", function () {
+          arrow_l.style.display = "none";
+          arrow_r.style.display = "none";
+          setInterval(function () {
+            arrow_r.click();
+          }, 1500);
+        });
+        box.addEventListener("mouseenter", function () {
+          arrow_l.style.display = "block";
+          arrow_r.style.display = "block";
+          clearInterval(timer);
+        });
+
+        arrow_l.addEventListener("click", function () {
+          if (flag) {
+            flag = false;
+            if (num == 0) {
+              num = ul.children.length - 1;
+              ul.style.left = -num * boxWidth + "px";
+            }
+            num--;
+            animate(ul, -num * boxWidth, function () {
+              flag = true;
+            });
+            circle--;
+            circle = circle < 0 ? wrap.length - 1 : circle;
+            for (let i = 0; i < wrap.length; i++) {
+              wrap[i].classList.remove("current");
+            }
+            wrap[circle].classList.add("current");
+          }
+        });
+
+        arrow_r.addEventListener("click", function () {
+          if (flag) {
+            flag = false;
+            if (num == ul.children.length - 1) {
+              ul.style.left = 0;
+              num = 0;
+            }
+            num++;
+            animate(ul, -num * boxWidth, function () {
+              flag = true;
+            });
+
+            circle++;
+            if (circle == wrap.length) {
+              circle = 0;
+            }
+            for (let i = 0; i < wrap.length; i++) {
+              wrap[i].classList.remove("current");
+            }
+            wrap[circle].classList.add("current");
+          }
+        });
+
+        wrap.forEach(function (item, index) {
+          item.addEventListener("click", function () {
+            for (let i = 0; i < wrap.length; i++) {
+              wrap[i].classList.remove("current");
+            }
+            this.classList.add("current");
+            circle = index;
+            num = index;
+            animate(ul, -index * boxWidth);
+          });
+        });
+
+        var timer = setInterval(function () {
+          arrow_r.click();
+        }, 1500);
+      });
+    </script>
+  </body>
+</html>

@@ -6,6 +6,10 @@
     <title>Document</title>
     <script src="animation.js"></script>
     <style>
+      *{
+        margin: 0;
+        padding: 0;
+      }
       button {
         width: 50px;
         height: 30px;
@@ -46,7 +50,7 @@
               var step = (800 - box.offsetLeft) / 10;
               var step = step > 0 ? Math.ceil(step) : Math.floor(step);
 
-              if (step > 800) {
+              if (step >= 800) {
                 clearInterval(timer);
               }
               box.style.left = box.offsetLeft + step + "px";

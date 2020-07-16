@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>获取</button>
+    <button class="close">清空</button>
+    <script>
+      var btn = document.querySelector("button");
+      btn.addEventListener("click", function () {
+        //getItem(str)从localStorage中获取某个属性的值
+        var res = localStorage.getItem("hobby");
+        var res1 = localStorage.getItem("namelist");
+        console.log(res, res1);
+
+        //key(index)返回localStorage的可以key值
+      });
+      document.querySelector(".close").onclick = function () {
+        localStorage.clear();
+      };
+
+      //数据持久化
+      //页面刷新后数据存在
+      //将数据保存在一个不会被销毁的容器内：本地，数据库：云数据库 对象存储csdn
+    </script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div></div>
+    <div class="box"></div>
+    <div id="box"></div>
+    <script>
+      getElement("div"); //选中html元素并返回 元素对象或类数组
+      getElement(".box");
+      getElement("#box");
+      // getElement of methods is used to select element and return element or elements
+      // option("string")
+      function getElement(str) {
+        var res = str.indexOf();
+        if (str.charAt(0) === ".") {
+          return document.getElementsByClassName(str);
+        } else if (str.charAt(0) === "#") {
+          return document.getElementById(str);
+        } else {
+          return document.getElementsByTagName(str);
+        }
+      }
+      console.log(getElement("div"));
+      console.log(getElement(".box"));
+      console.log(getElement("#box"));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="box wrap b a"></div>
+    <script>
+      var box = document.querySelector(".box");
+      removeClass(box, "wrap");
+      function removeClass(el, str) {
+        var classes = el.className;
+        classes = classes.split(/\s+/); // /\s+/ 匹配多个空格 \s 空格字符+无限次匹配
+        var res = classes.indexOf(str) !== -1 ? true : false;
+        if (res) {
+          // el.classList.remove(str);
+          var newArr = classes.filter(function (item) {
+            return item !== str;
+            
+          });
+          var newStr = newArr.join(" ");
+          el.className = newStr;
+        }
+        return el;
+      }
+    </script>
+  </body>
+</html>

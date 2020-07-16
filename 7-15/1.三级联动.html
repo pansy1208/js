@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="">
+      <select name="pro" id="pro"></select>
+      <select name="city" id="city"></select>
+      <select name="area" id="area"></select>
+    </form>
+    <script src="../7-14/area.js"></script>
+    <script>
+      var pro = document.querySelector("#pro");
+      var city = document.querySelector("#city");
+      var areas = document.querySelector("#area");
+
+      //初始化省
+      (function () {
+        for (const p in area) {
+          var option = document.createElement("option");
+          option.innerHTML = p;
+          option.value = p;
+          pro.appendChild(option);
+        }
+        // creatOption(pro, area);
+      })();
+      //初始化城市
+      var cityData = area[pro[0].value][0];
+      (function () {
+        for (const c in cityData) {
+          var option = document.createElement("option");
+          option.innerHTML = c;
+          option.value = c;
+          city.appendChild(option);
+        }
+      })();
+      //初始化区
+      (function () {
+        var areaData = cityData[city[0].value];
+        for (let i = 0; i < areaData.length; i++) {
+          for (const a in areaData[i]) {
+            var option = document.createElement("option");
+            option.innerHTML = a;
+            option.value = a;
+            areas.appendChild(option);
+          }
+        }
+      })();
+
+      pro.addEventListener("change", function (e) {
+        //select.selectedIndex 返回选中的索引值
+        var cityIndex = pro[pro.selectedIndex].value;
+        cityData = area[cityIndex][0];
+        //情况selet city
+        city.innerHTML = "";
+        //更新市
+        for (const c in cityData) {
+          var option = document.createElement("option");
+          option.innerHTML = c;
+          option.value = c;
+          city.appendChild(option);
+        }
+        //更新区
+
+        var areaData = cityData[city[city.selectedIndex].value];
+        areas.innerHTML = "";
+        for (let i = 0; i < areaData.length; i++) {
+          for (const a in areaData[i]) {
+            var option = document.createElement("option");
+            option.innerHTML = a;
+            option.value = a;
+            areas.appendChild(option);
+          }
+        }
+      });
+      //当用户选择市发生变化
+      city.addEventListener("change", function () {
+        //用户选择哪一个市
+        var option = city[city.selectedIndex].value;
+        //根据选择的市获取区数据
+        var areaData = cityData[option];
+        areas.innerHTML = "";
+        //根据区数据更新区
+        for (let i = 0; i < areaData.length; i++) {
+          for (const a in areaData[i]) {
+            var option = document.createElement("option");
+            option.innerHTML = a;
+            option.value = a;
+            areas.appendChild(option);
+          }
+        }
+      });
+      function creatOption(el, data) {
+        for (const k in data[i]) {
+          var option = document.createElement("option");
+          option.innerHTML = k;
+          option.value = k;
+          el.appendChild(option);
+        }
+      }
+    </script>
+  </body>
+</html>

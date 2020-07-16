@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>跳转到B</button>
+    <script>
+      var str = "a数据";
+      //从a页面跳到b页面时：要将a中数据传入b中---->页面间传值
+      //1:url传值 传少量的字符串类型的数据
+      //2:sessionStorage 浏览器关闭会自动清空
+      //3:localStorage
+
+      var btn = document.querySelector("button");
+      btn.addEventListener("click", function () {
+        location.href = "./b.html?str=" + str;
+      });
+      var obj = {
+        username: "pansy",
+        password: "xiaoge",
+        list: ["ragaergarga", 123, 42],
+      };
+      console.log(sessionStorage);
+      btn.addEventListener("click", function () {
+        sessionStorage.setItem("token", obj);
+        for (const k in obj) {
+            sessionStorage.setItem(k,obj[k])
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>就这???</div>
+    <script>
+      // html(); 修改某一个元素中的内容
+      function html(el, str) {
+        el.innerHTML = str;
+        return el;
+      }
+      var div = document.querySelector("div");
+      html(div, "不会吧不会吧不会吧");
+    </script>
+  </body>
+</html>

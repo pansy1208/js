@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <button>click</button>
+    <script src="todos.js"></script>
+    <script>
+      var box = document.querySelector(".box");
+      var btn = document.querySelector("button");
+      btn.addEventListener("click", function () {
+        hide(box);
+      });
+      // hide(box);
+
+      // function hide(el) {
+      //   var val = 1;
+      //   el.style.opacity = 1;
+      //   el.timer = setInterval(function () {
+      //     val -= 0.1;
+      //     if (val <= 0) {
+      //       el.style.opacity = 0;
+      //       el.style.display = "none";
+      //       clearInterval(el.timer);
+      //       return;
+      //     }
+      //     el.style.opacity = val;
+      //   }, 50);
+      //   return el;
+      // }
+      // function show(el) {
+      //   var val = 0;
+      //   el.style.display = "block";
+      //   el.style.opacity = val;
+      //   el.timer = setInterval(function () {
+      //     val += 0.1;
+      //     if (val >= 1) {
+      //       el.style.opacity = 1;
+      //       el.style.display = "block";
+      //       clearInterval(el.timer);
+      //       return;
+      //     }
+      //     el.style.opacity = val;
+      //   }, 50);
+      //   return el;
+      // }
+      // setTimeout(function () {
+      //   show(box);
+      // }, 1000);
+    </script>
+  </body>
+</html>
