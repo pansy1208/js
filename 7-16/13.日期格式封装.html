@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // var date = new Date();
+
+      // function formatDate(date) {
+      //   //1.确定数据结构
+      //   var str = "YYYY-MM-DD HH:mm:SS";
+      //   //2:获取具体年月日时分秒，替换结构字符串
+      //   var time = {
+      //     "Y+": date.getFullYear(),
+      //     "M+": date.getMonth() + 1,
+      //     "D+": date.getDate(),
+      //     "H+": date.getHours(),
+      //     "m+": date.getMinutes(),
+      //     "S+": date.getSeconds(),
+      //   };
+      //   //把str字符串替换为YYYY--2020 ..
+      //   //如何获取正则匹配的YYYY: regExp.$1
+      //   //完成替换 replace(RegExp.$1,time[key])
+
+      //   for (const key in time) {
+      //     var reg = new RegExp(`(${key})`);
+      //     if (reg.test(str)) {
+      //       var newVul = time[key] >= 10 ? time[key] : "0" + time[key];
+      //       str = str.replace(RegExp.$1, newVul);
+      //     }
+      //   }
+      //   return str;
+      // }
+      // formatDate(date);
+    </script>
+  </body>
+</html>
+
+<!-- <script>
+  //日期格式不确定
+  //2020-07-06 12:12:12  2020/07/06 12:12:12
+  function formatDate(date, str) {
+    var res = str;
+    var time = {
+      "Y+": date.getFullYear(),
+      "M+": date.getMonth() + 1,
+      "D+": date.getDate(),
+      "H+": date.getHours(),
+      "m+": date.getMinutes(),
+      "S+": date.getSeconds(),
+    };
+    for (const key in time) {
+      var reg = new RegExp(`(${key})`);
+      if (reg.test(res)) {
+        var newVul = time[key] >= 10 ? time[key] : "0" + time[key];
+        res = res.replace(RegExp.$1, newVul);
+      }
+    }
+    return res;
+  }
+  var res = formatDate(new Date(), "YYYY/MM/DD HH:mm:SS");
+  console.log(res);
+</script> -->
+
+<script>
+  var a = new Date();
+  Date.prototype.format = function (str) {
+    var res = str;
+    var time = {
+      "Y+": this.getFullYear(),
+      "M+": this.getMonth() + 1,
+      "D+": this.getDate(),
+      "H+": this.getHours(),
+      "m+": this.getMinutes(),
+      "S+": this.getSeconds(),
+    };
+    for (const key in time) {
+      var reg = new RegExp(`(${key})`);
+      if (reg.test(res)) {
+        var newVul = time[key] >= 10 ? time[key] : "0" + time[key];
+        res = res.replace(RegExp.$1, newVul);
+      }
+    }
+    return res;
+  };
+
+  a = a.format("YYYY/MM/DD HH:mm:SS");
+  console.log(a, "++++");
+</script>

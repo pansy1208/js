@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 正则对象
+      //匹配验证替换字符串，仅对字符串有效果
+      //表单验证，替换字符：匹配批量结果...
+      //语法：/匹配规则/修饰符号
+      var reg = new RegExp("pansy");
+      console.dir(reg);
+      var str = "xiaoge,sanjiu";
+      var reg1 = /['i']/g;
+      var res = str.match(reg1);
+      console.log(res);
+
+      var res1 = str.replace(/['i']/g, "?");
+      console.log(res1);
+    </script>
+  </body>
+</html>

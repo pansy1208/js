@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //+ ==={1,}
+      //* ==={0,}
+      //? 非贪婪模式
+      var str = "d1as342as8da49s8d4as5da48d9s46541565f644fada4sd84s6d84sa4d5";
+      var reg = /\d{3,5}?/g;
+      var reg1 = /\d{3,5}/g;
+      console.log(str.match(reg));
+      console.log(str.match(reg1));
+
+      var reg2 = /\d+/g;
+      var reg3 = /\d+?/g;
+      console.log(str.match(reg3));
+
+      var reg4 = /\d{0,}/g;
+      
+      
+    </script>
+  </body>
+</html>

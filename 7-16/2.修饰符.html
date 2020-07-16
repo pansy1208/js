@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //i忽略大小写 g全局匹配
+      var str = "伊索亚尔,三玖，三笠，六花";
+      var reg = /['三']/i;
+      var reg1 = /['三']/g;
+      var res = str.replace(reg, "san");
+      console.log(res);
+    </script>
+  </body>
+</html>

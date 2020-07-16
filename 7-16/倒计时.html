@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 250px;
+        height: 150px;
+        background-color: red;
+        margin: 200px auto;
+      }
+      .hour,
+      .minutes,
+      .second {
+        width: 50px;
+        height: 50px;
+        background-color: black;
+        font-size: 27px;
+        color: #fff;
+        float: left;
+        margin: 52px 14px;
+        text-align: center;
+        line-height: 50px;
+      }
+      span {
+        float: left;
+        color: #fff;
+        font-size: 27px;
+        margin-top: 54px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="hour">??</div>
+      <span>:</span>
+      <div class="minutes">??</div>
+      <span>:</span>
+      <div class="second">??</div>
+    </div>
+    <script>
+      var hour = document.querySelector(".hour");
+      var minutes = document.querySelector(".minutes");
+      var second = document.querySelector(".second");
+      var futureTime = new Date("2020-7-16 22:29:00").getTime();
+      var time = new Date().getTime();
+      var times = (futureTime - time) / 1000;
+      var h = parseInt(times / 60 / 60);
+      h = h >= 10 ? h : "0" + h;
+      hour.innerHTML = h;
+      var m = parseInt((times / 60) % 60);
+      m = m >= 10 ? m : "0" + m;
+      minutes.innerHTML = m;
+      var s = parseInt(times % 60);
+      s = s >= 10 ? s : "0" + s;
+      second.innerHTML = s;
+
+      obj = setInterval(function () {
+        var time = new Date().getTime();
+        var times = (futureTime - time) / 1000;
+        var h = parseInt(times / 60 / 60);
+        h = h >= 10 ? h : "0" + h;
+        hour.innerHTML = h;
+        var m = parseInt((times / 60) % 60);
+        m = m >= 10 ? m : "0" + m;
+        minutes.innerHTML = m;
+        var s = parseInt(times % 60);
+        s = s >= 10 ? s : "0" + s;
+        second.innerHTML = s;
+        if (times <= 0) {
+          clearInterval(obj);
+        }
+      }, 1000);
+      if (times <= 0) {
+        clearInterval(obj);
+        hour.innerHTML = '00';
+        minutes.innerHTML = '00';
+        second.innerHTML = '00';
+      }
+    </script>
+  </body>
+</html>

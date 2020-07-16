@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var reg = /[0-9]/g;
+      var reg = /\d/g; //匹配0-9字符
+      var reg = /[a-zA-Z_]/g; //数字字母下划线
+      var reg = /\w/g; // 匹配数字字母下划线
+
+      var reg1 = /^\d\w$/;
+      var str = "2r";
+      console.log(str.match(reg1));
+
+      var rule = /^[1][^\s]{1,}/g;
+      var str1 = "1dffsf5df55";
+      var str2 = "5sadad";
+      console.log(str1.match(rule));
+      console.log(str2.match(rule));
+
+      var phoneRule = /^1\d{10}$/g; //规定以1开头 长度为11
+      var num = "15648889411";
+      console.log(num.match(phoneRule));
+
+      //边界类
+      var str3 = "不会吧，不会吧，不会吧";
+      var reg2 = /\B吧\B/g;
+      console.log(str3.match(str2));
+
+      var str4 = "a is b is c";
+      var reg3 = /\bis\b/g; //单词界限
+      console.log(str4.match(reg3));
+    </script>
+  </body>
+</html>

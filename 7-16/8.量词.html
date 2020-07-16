@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //量词设置匹配字符长度
+      //{m,n}匹配字符长度 最小m最大n
+      //{n,}匹配字符长度 大于等于n
+      //{n}匹配字符长度为n
+
+      //.任意字符 \.点
+      var reg = /.{3}/; //验证长度为3 任意字符
+      var str = "不会吧";
+      console.log(str.match(reg));
+
+      //只能为数字，不限制长度
+      var reg1 = /^[0-9]{1,}$/;
+      var str1 = "1ad84s8d6a41656848da6151da6189";
+      console.log(str1.match(reg1));
+      console.log(reg1.exec(str1));
+      //验证某个字符是否符合正则 返回true or false
+      console.log(reg1.test(str1));
+
+      //匹配首部或尾部为空格
+      var reg2 = /^\s{1,}|\s{1,}$/g;
+      var str3 = "  aaaaaaa   sss   ";
+      console.log(str3.replace(reg2, "-"));
+
+      //去除字符串中所有空格
+      //匹配所有空格
+      var reg3 = /\s{1,}/g;
+      console.log(str3.replace(reg3, ""));
+    </script>
+  </body>
+</html>

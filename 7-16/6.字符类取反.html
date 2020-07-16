@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var reg = /[^0-9]/g; //除了0-9其他都匹配
+      var str = "8a46d4sa8";
+      console.log(str.match(reg));
+      var reg1 = /[^a-zA-Z]/g;
+      console.log(str.match(reg1));
+      var reg2=/[^0-9a-zA-Z_]/g
+    </script>
+  </body>
+</html>
