@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      ul {
+        list-style: none;
+        width: 500px;
+        margin: 10px auto;
+      }
+      li {
+        display: flex;
+      }
+      .left img {
+        width: 100px;
+        height: 100px;
+      }
+      .right {
+        margin-left: 20px;
+        font-size: 20px;
+        font-weight: 700;
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul id="list"></ul>
+    <!-- <script>
+      var data = {
+        code: 200,
+        more: true,
+        artList: [
+          {
+            albumSize: 105,
+            alias: ["Eason Chan"],
+            briefDesc: "",
+            followed: false,
+            id: 2116,
+            img1v1Id: 19165587183900212,
+            img1v1Id_str: "19165587183900212",
+            img1v1Url:
+              "https://p1.music.126.net/_d1scu7z_1dmd0Zgv9mTLA==/19165587183900212.jpg",
+            musicSize: 1802,
+            name: "陈奕迅",
+            picId: 18641120139241412,
+            picId_str: "18641120139241412",
+            picUrl:
+              "https://p1.music.126.net/nILBk4DaE3yV__25uq-5GQ==/18641120139241412.jpg",
+            topicPerson: 0,
+            trans: "",
+          },
+          {
+            albumSize: 105,
+            alias: ["Eason Chan"],
+            briefDesc: "",
+            followed: false,
+            id: 2116,
+            img1v1Id: 19165587183900212,
+            img1v1Id_str: "19165587183900212",
+            img1v1Url:
+              "https://p1.music.126.net/_d1scu7z_1dmd0Zgv9mTLA==/19165587183900212.jpg",
+            musicSize: 1802,
+            name: "Eason Chan",
+            picId: 18641120139241412,
+            picId_str: "18641120139241412",
+            picUrl:
+              "https://p1.music.126.net/nILBk4DaE3yV__25uq-5GQ==/18641120139241412.jpg",
+            topicPerson: 0,
+            trans: "",
+          },
+        ],
+      };
+
+      var list = document.querySelector("#list");
+      window.onload = function () {
+        var { artList, code, more } = data;
+        if (code === 200) {
+          for (let i = 0; i < artList.length; i++) {
+            var { img1v1Url, name } = artList[i];
+            var template = `<li>
+          <div class="left">
+          <img
+            src="${img1v1Url}"
+          />
+        </div>
+        <div class="right">
+          <span>${name}</span>
+        </div>
+      </li>`;
+
+            // list.innerHTML += template;
+            var doc = new DOMParser().parseFromString(template, "text/html");
+            list.appendChild(doc.body.childNodes[0]);
+          }
+        }
+      };
+    </script> -->
+
+    <script>
+      var list = document.querySelector("#list");
+      var url = "http://192.168.1.120:3000";
+      function ajax(method, url, callback) {
+        var res = {};
+        var xhr = new XMLHttpRequest();
+        xhr.open(method, url);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+          if (xhr.status == 200 && xhr.readyState == 4) {
+            res = xhr.response;
+            callback(res);
+          } else {
+            res = {
+              error: "请求失败！",
+            };
+            callback(res);
+          }
+        };
+      }
+      ajax("GET", url, function (data) {
+        // console.log(data); data接收响应的数据
+        var data = JSON.parse(data);
+        if (data.code == 200) {
+          var { artists } = data;
+          for (let i = 0; i < artists.length; i++) {
+            var { name, img1v1Url } = artists[i];
+            var template = `<li>
+          <div class="left">
+          <img
+            src="${img1v1Url}"
+          />
+        </div>
+        <div class="right">
+          <span>${name}</span>
+        </div>
+      </li>`;
+            // list.innerHTML += template;
+            var doc = new DOMParser().parseFromString(template, "text/html");
+            list.appendChild(doc.body.childNodes[0]);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

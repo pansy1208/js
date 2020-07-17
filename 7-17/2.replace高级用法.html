@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var str = "三色堇三玖三笠";
+      var count = 0;
+      var res = str.replace(/['三']/g, function (a, b, c) {
+        console.log(a); //正则匹配的结果
+        console.log(b); //匹配的索引
+        console.log(c); //str
+        return "san" + ++count; //替换
+      });
+      console.log(res);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>{{msg}}</h1>
+    <div>{{name}}</div>
+
+    <script>
+      var data = {
+        msg: "不会吧",
+        name: "就这？",
+      };
+      var h1 = document.querySelector("h1");
+      var div = document.querySelector("div");
+      var h1val = h1.innerHTML;
+      var divVal = div.innerHTML;
+      // h1.innerHTML = h1val.replace(/\{\{(\w+)\}\}/, function (a, b, c) {
+      //   console.log(a);
+      //   console.log(RegExp.$1);
+      //   return data[RegExp.$1];
+      // });
+      // div.innerHTML = divVal.replace(/\{\{(\w+)\}\}/, function (a, b, c) {
+      //   console.log(a);
+      //   console.log(RegExp.$1);
+      //   return data[RegExp.$1];
+      // });
+
+      // function replaceVal(el) {
+      //   str = el.innerHTML;
+      //   el.innerHTML = str.replace(/\{\{(\w+)\}\}/, function (a, b, c) {
+      //     for (const key in data) {
+      //       if (key === RegExp.$1) {
+      //         return data[key];
+      //       }
+      //     }
+      //   });
+      // }
+      // replaceVal(div);
+      // replaceVal(h1);
+      function replace() {
+        var template = document.body.innerHTML;
+        var res = template.replace(/\{\{(\w+)\}\}/g, function (a, b, c) {
+          var reg = /\w+/;
+          var newVal = a.match(reg)[0];
+          for (const key in data) {
+            if (key === newVal) {
+              return data[key];
+            }
+          }
+        });
+        document.body.innerHTML = res;
+      }
+      replace(data);
+    </script>
+  </body>
+</html>

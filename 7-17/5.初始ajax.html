@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button class="btn">发送请求</button>
+    <script>
+      var btn = document.querySelector(".btn");
+      btn.addEventListener("click", function () {
+        //实例化xhr对象 可以发送网络请求
+        var xhr = new XMLHttpRequest();
+        var url = "http://musicapi.leanapp.cn/artist/list";
+        console.log(xhr);
+
+        //xhr 如何向服务器发送请求
+        //1：服务器地址是什么？某一个接口地址是什么？
+        //2:请求方式是什么？get post
+        //3: 接通接口需要什么参数？--->请求参数
+
+        //open()参一请求方式 参二请求地址 参三get请求的请求参数
+        xhr.open("GET", url);
+        xhr.send(); //发送请求 参数：是post的请求参数 类型string
+
+        //web浏览器如何接收服务器响应？成功 失败
+        //成功
+        //监听服务器响应的事件
+        xhr.onreadystatechange = function (data) {
+          console.log(data); //事件对象
+
+          //获取响应数据
+          var dataJson = xhr.responseText;
+          dataJson = JSON.parse(dataJson);
+          console.log(dataJson);
+          console.log(xhr.status); //响应的状态：200 http状态码 响应成功
+          console.log(xhr.response); //响应体中内容，存放响应数据
+        };
+      });
+    </script>
+  </body>
+</html>

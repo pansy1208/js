@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var str = "a eatix regular exprution";
+
+      // 断言是匹配字符的条件判断，不会匹配具体字符
+      var reg = /e(?=gular)/g; //匹配的e 条件是e右边字符是否等于gular
+      console.log(reg.exec(str));
+      console.log(str.replace(reg, "?"));
+
+      // var reg1 = /w(?>=3)/g;
+      var reg2 = /\d(?=\d{5})/g;
+      var str1 = "a8s9";
+      var str2 = "lh66666666";
+      console.log(reg2.exec(str1));
+      console.log(reg2.test(str2));
+
+      //正则表达式匹配方式 从左往右
+      //前瞻：匹配字符的时候需要向右看看是否满足某个条件也叫正向匹配
+      //匹配向左看叫负向匹配（可以理解为后顾）js没有后顾概念
+      //前：字符串尾部
+      //后：字符串头部
+
+      var str3 = "regex represents regular expressio";
+      var reg3=/(?<=\w)re/g
+      console.log(str3.replace(reg3,'???'));
+    </script>
+  </body>
+</html>

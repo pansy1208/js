@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>不会吧不会吧不会吧</h1>
+    <script>
+      var val = document.querySelector("h1").innerHTML;
+      console.log(val);
+      var res = val.replace(/(不会吧)/, function (a, b, c) {
+        return `<span style="color:blue">${a}</span>`;
+      });
+      document.querySelector("h1").innerHTML = res;
+    </script>
+  </body>
+</html>
