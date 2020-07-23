@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="box"></div>
+      <p>pansy</p>
+      <ul>
+        <li>就这1</li>
+        <li>就这12</li>
+        <li>
+          就这123
+          <span>伊索亚尔</span>
+          <span>伊索亚尔</span>
+          <span>伊索亚尔</span>
+          <span>伊索亚尔</span>
+          <span>伊索亚尔</span>
+          <span>伊索亚尔</span>
+        </li>
+      </ul>
+    </div>
+    <script src="jquery-3.4.0.js"></script>
+    <script>
+      // 如何通过当前元素查找相关元素
+      // 父元素：子元素结合：第几个子元素：兄弟元素
+      var lis = $("ul").children(); // 返回子元素集合
+      console.log(lis);
+      var parent = $("ul").parent(); //返回父元素jq对象
+      console.log(parent);
+
+      var span = $("ul").find("span");
+      console.log(span);
+      //找到第二个span
+      // jq.eq(index)选中第几个元素index索引值
+      console.log(span.eq(1).css({ color: "red" }));
+    </script>
+  </body>
+</html>

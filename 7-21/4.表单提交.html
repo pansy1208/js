@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="">
+      <label for="">
+        <input type="text" name="username" />
+      </label>
+      <div>
+        <select name="city" id="city">
+          <option value="nj">南京</option>
+          <option value="cj">常州</option>
+          <option value="sh">上海</option>
+        </select>
+      </div>
+      <div>
+        <input type="checkbox" value="sanjiu" name="sj" />三玖
+        <input type="checkbox" value="weilai" name="wl" />未来
+        <input type="checkbox" value="leimu"  name="lm"/>蕾姆
+      </div>
+      <div>
+        <input type="radio" id="sex" name="sex" value="woman" />女
+        <input type="radio" id="sex" name="sex" value="man" />男
+      </div>
+      <div>
+        <button>提交</button>
+      </div>
+    </form>
+    <script src="jquery-3.4.0.js"></script>
+    <script>
+      $("form").on("submit", function (e) {
+        e.preventDefault();
+        // 获取表单所有内容
+        var res = $("form").serializeArray();
+        console.log(res);
+      });
+    </script>
+  </body>
+</html>

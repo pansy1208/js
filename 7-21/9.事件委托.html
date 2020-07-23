@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="wrap">
+      <h2>小哥001</h2>
+      <h2>小哥002</h2>
+      <h2>小哥003</h2>
+      <h2>小哥004</h2>
+      <h2>小哥005</h2>
+    </div>
+    <script src="jquery-3.4.0.js"></script>
+    <script>
+      // 将h2的点击事件委托wrap只有点击h2事件才触发
+      $(".wrap").on("click", 'h2', function (e) {
+        // 获取绑定事件元素 .wrap
+        // console.log($(this));
+        // console.log(e.currentTarget);
+
+        // 获取触发事件元素
+        console.log(e.originalEvent.target);
+
+        // 需求：点击h2字体变色
+        // $(e.originalEvent.target).css({ color: "red" });
+        console.log(e.originalEvent.target.localName);
+        e.originalEvent.target.localName == "h2"
+          ? $(e.originalEvent.target).css({ color: "red" })
+          : $(e.originalEvent.target).css({ color: "" });
+      });
+    </script>
+  </body>
+</html>

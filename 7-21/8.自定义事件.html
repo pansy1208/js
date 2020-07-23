@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="box"></div>
+    <button>点击</button>
+    <script src="jquery-3.4.0.js"></script>
+    <script>
+      $(".box").on("pansy", function (data, event) {
+        console.log("自定义事件");
+        console.log(data);
+        console.log(event);
+      });
+      $("button").on("click", function () {
+        // trigger()触发自定义事件：
+        // 参数一：事件名，参数二：给事件处理函数出入实参
+        $(".box").trigger("pansy", {
+          color: "red",
+          width: "300px",
+        });
+      });
+    </script>
+  </body>
+</html>

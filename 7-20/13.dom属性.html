@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="box" id="name"></div>
+    <script src="jquery-3.4.0.js"></script>
+    <script>
+      // 如何通过jq获取属性的值
+      var res = $(".box").attr("id");
+      console.log(res);
+      // 如何给id值替换为cname
+      $(".box").attr("id", "cname");
+      // 如何新增属性并设置值
+      $(".box").attr("data-name", "aaa");
+    </script>
+  </body>
+</html>

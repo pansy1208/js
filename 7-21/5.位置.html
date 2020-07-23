@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .wrap {
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        position: absolute;
+        top: 300px;
+        left: 200px;
+      }
+      .box {
+        width: 50px;
+        height: 50px;
+        background-color: pink;
+        border-radius: 50%;
+        margin-left: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="box"></div>
+    </div>
+
+    <script src="jquery-3.4.0.js"></script>
+    <script>
+      $(window).ready(function () {
+        for (let i = 0; i < 100; i++) {
+          $("body").append("<p>pansy</p>");
+        }
+        $(document).on("scroll", function () {
+          var top = $(document).scrollTop();
+        });
+      });
+      // 获取元素位置的偏移量
+      var obj = $(".wrap").offset();
+      console.log(obj);
+      var postion = $(".box").position();
+      console.log(postion);
+      // 元素相对窗口的距离
+      console.log($(".box").offset());
+    </script>
+  </body>
+</html>

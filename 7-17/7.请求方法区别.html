@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    get 用户需要向服务器获取大量数据的时候 请求通过URL方式传参： 1：有缓存的作用
+    2：弊端：所有请求参数都可以被用户查看到不安全，请求参数：数据少
+    post通过请求体发送传送请求参数 1：提交数据、表单提交用的都是post请求
+    2：没有缓存，不可以利用缓存减少http请求次数 3：想比get更加安全 pull
+    用于数据更新 delete 用于删除服务器数据
+
+    <script>
+      var url = "baseurl.vebcoder.cn:9527/api/search";
+      window.onload = function () {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST",url,true);
+        //content-type 告诉服务器请求体中数据是什么格式
+        xhr.setRequestHeader(
+          "content-type",
+          "application/x-www-form-urlencoded"
+        );
+        //请求头有多个----->写多个xhr.setRequestHeader()
+
+        //send()发送请求
+        //参数：字符串：post请求参数
+        //格式'?p1=值&p2=值'
+        var params='coffee'
+        xhr.send(`word=${params}`);
+      };
+    </script>
+  </body>
+</html>

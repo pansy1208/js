@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="checkbox" value="1" />小哥
+    <input type="checkbox" value="2" />伊索亚尔
+    <input type="checkbox" value="3" />未来
+    <input type="checkbox" value="4" />蕾姆
+    <input type="checkbox" value="5" />三玖
+    <button>提交</button>
+  </body>
+  <script src="jquery-3.4.0.js"></script>
+  <script>
+    var checkArr = [];
+    // 如何获取用户勾选的内容
+    // $("input:checkbox").on("change", function () {
+    //   console.log($(this));
+    // });
+    $("button").on("click", function () {
+      $("input:checked").each(function (index, item) {
+        console.log(item.value);
+        checkArr.push(item.value);
+      });
+      console.log($("input:checked"), checkArr);
+    });
+  </script>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      #main {
+        width: 1000px;
+        /* border: solid 1px red; */
+        text-align: center;
+        margin: 180px auto;
+      }
+      .nav {
+        overflow: hidden;
+        display: inline-block;
+      }
+      .nav a {
+        float: left;
+        color: dodgerblue;
+        background-color: #ddd;
+        text-decoration: none;
+        font-size: 18px;
+        width: 200px;
+        height: 50px;
+        text-align: center;
+        line-height: 50px;
+        border: solid 1px yellow;
+      }
+      .content {
+        width: 800px;
+        height: 500px;
+        margin-top: 20px;
+        position: relative;
+        margin: 0 auto;
+      }
+      .content div {
+        width: 800px;
+        height: 500px;
+        line-height: 500px;
+        font-size: 30px;
+        color: #fff;
+        background-color: dodgerblue;
+        margin-top: 20px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <div class="nav">
+        <a href="#">选向001</a>
+        <a href="#">选向002</a>
+        <a href="#">选向003</a>
+        <a href="#">选向004</a>
+      </div>
+      <div class="content">
+        <div class="box">
+          学习压力太大了
+        </div>
+        <div class="box">
+          看一下美女图片
+        </div>
+        <div class="box">
+          下一个就是美女图爿了
+        </div>
+        <div class="box">
+          看什么，杨老头赶紧去学习
+        </div>
+      </div>
+    </div>
+    <script src="jquery-3.4.0.js"></script>
+    <script>
+      $(window).ready(function () {
+        // 需要设置一个状态值：表示当前显示元素
+        var x = 0;
+        $(`.box:eq(${x})`).css({ display: "block" });
+        $(`.nav>a:eq(${x})`).css({ background: "#ddd", color: "dodgerblue" });
+
+        $(".nav").on("click", "a", function () {
+          $(`.box:eq(${x})`).css({ display: "none" });
+          $(`.nav>a:eq(${x})`).css({ background: "#ddd", color: "dodgerblue" });
+          x = $(this).index(); //获取当前元素的索引值
+          $(`.box:eq(${x})`).css({ display: "block" });
+          $(`.nav>a:eq(${x})`).css({ background: "skyblue", color: "red" });
+        });
+      });
+    </script>
+  </body>
+</html>

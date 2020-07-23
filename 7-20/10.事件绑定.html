@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="jquery-3.4.0.js"></script>
+  </head>
+  <body>
+    <button>toggle</button>
+    <div class="box"></div>
+    <script>
+      $(".box").css({ width: "200px", height: "200px", background: "pink" });
+      $("button").on("click", function () {
+        // 缩放实现动画效果
+        $(".box").toggle(200,function(){
+          console.log(this);
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,136 @@
+.detailbody {
+  width: 1000px;
+  margin: 0 auto;
+}
+.back {
+  margin-top: 15px;
+}
+.back button {
+  width: 90px;
+  height: 40px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  border-radius: 5px;
+}
+.back button:hover {
+  background-color: rgba(128, 0, 128, 0.1);
+}
+.middle {
+  overflow: hidden;
+}
+.pic {
+  width: 400px;
+  position: relative;
+}
+.bigImg {
+  width: 400px;
+  height: 400px;
+  position: relative;
+}
+.bigImg img {
+  width: 400px;
+  height: 400px;
+  display: none;
+}
+.smImg {
+  width: 400px;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+}
+.smImg img {
+  width: 80px;
+  height: 80px;
+}
+.glass {
+  width: 400px;
+  height: 400px;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 405px;
+  display: none;
+}
+.glass img {
+  width: 800px;
+  height: 800px;
+  position: relative;
+  display: none;
+}
+.mark {
+  width: 200px;
+  height: 200px;
+  background-color: black;
+  border-radius: 10px;
+  opacity: 0.2;
+  position: absolute;
+  display: none;
+}
+.active {
+  border: 2px solid purple;
+}
+
+.handle {
+  margin: 100px 0 0 180px;
+}
+.handle button {
+  width: 126px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  background-color: #f56c6c;
+  border: 0;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 14px;
+}
+.handle div {
+  margin-bottom: 17px;
+}
+.price {
+  color: red;
+}
+.footer .recomend {
+  margin-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}
+.shopmore {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.footer-btm {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.shop {
+  width: 180px;
+  height: 220px;
+  margin: 5px;
+}
+.shop img {
+  width: 180px;
+}
+.info {
+  width: 180px;
+  margin: 10px;
+}
+.fl {
+  color: red;
+  font-weight: 700;
+  margin-right: 50px;
+}
+h3 {
+  font-size: 16px;
+}
+.title {
+  width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

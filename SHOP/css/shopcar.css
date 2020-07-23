@@ -1,0 +1,60 @@
+.shopmore {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.shop {
+  width: 230px;
+  height: 220px;
+  margin: 5px;
+}
+.shop img {
+  width: 220px;
+}
+.info {
+  margin: 10px;
+}
+.fl {
+  color: red;
+  font-weight: 700;
+  margin-right: 80px;
+}
+h3 {
+  font-size: 16px;
+}
+.title {
+  width: 100%;
+  text-align: center;
+}
+.tabbar {
+  width: 122px;
+  border: 1px solid purple;
+  position: fixed;
+  top:150px;
+  left: 10px;
+  border-radius: 5px;
+  text-align: center;
+  padding: 10px;
+}
+.tabbar li {
+  width: 100px;
+  height: 30px;
+  line-height: 30px;
+  
+}
+li:hover {
+  font-weight: 700;
+  color: purple;
+  /* background-color: purple; */
+  border-radius: 100px;
+  /* opacity: 0.2; */
+}
+.leftactive {
+  font-weight: 700;
+  color: purple;
+}
+.active{
+  background-color: purple;
+  border-radius: 15px;
+}

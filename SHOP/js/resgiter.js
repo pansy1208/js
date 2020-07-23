@@ -5,7 +5,6 @@ var namewarn = document.querySelector(".namewarn");
 var pwdwarn = document.querySelector(".pwdwarn");
 
 btn.addEventListener("click", function (e) {
-  var info = {};
   e.preventDefault();
   var uname = username.value;
   var pwd = password.value;
@@ -21,43 +20,31 @@ btn.addEventListener("click", function (e) {
       pwdwarn.style.visibility = "hidden";
     }
   }
-
   if (nameRes.test(uname) && pwdRes.test(pwd)) {
     $.ajax({
-      url: "http://vebcoder.cn:9527/api/login",
+      url: "http://vebcoder.cn:9527/api/register",
+      method: "get",
+      dataType: "json",
       data: {
         userName: uname,
         password: pwd,
       },
-      method: "get",
-      dataType: "json",
       success: function (data) {
         if (data.code === 1) {
-          localStorage.setItem("token", data.token);
-          // localStorage.setItem("userId", data.userId);
-          // localStorage.setItem("userName", data.userName);
           var loading = window.parent.parent.document.querySelector(".loading");
           loading.style.display = "block";
           setTimeout(function () {
             loading.style.display = "none";
-            location.href = "home.html";
-            alert("登录成功！");
-            self.parent.frames[0].dl.innerHTML = "购物车";
-            self.parent.frames[0].zc.innerHTML = "退出登录";
+            location.href = "login.html";
+            alert("注册成功");
             var lis = self.parent.frames[0].lis;
-            lis[1].children[0].href='shopcar.html'
             for (let i = 0; i < lis.length; i++) {
               lis[i].classList.remove("active");
             }
-            lis[0].classList.add("active");
-          }, 800);
+            lis[1].classList.add("active");
+          }, 1000);
         } else {
-          var loading = window.parent.parent.document.querySelector(".loading");
-          loading.style.display = "block";
-          setTimeout(function () {
-            loading.style.display = "none";
-            alert("登录失败！");
-          }, 800);
+          alert("用户已注册");
         }
       },
       error: function (err) {

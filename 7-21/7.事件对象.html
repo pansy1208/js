@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>pansy1</h2>
+    <h2>pansy2</h2>
+    <h2>pansy3</h2>
+    <script src="jquery-3.4.0.js"></script>
+    <script>
+      $("h2").on("click", function (e) {
+        // 如何获取当前触发事件的元素
+        // $(this)
+        // e.currentTarget是dom元素
+        console.log(e, e.currentTarget);
+        $(e.currentTarget).css({
+          color: "red",
+        });
+      });
+      // jq性能优化
+      // 1.减少操作dom树的次数
+      // 用jqapi修改的都是虚拟dom。当虚拟dom修改完毕后jq底层会修改dom
+      // jq底层操作dom程序是异步
+    </script>
+  </body>
+</html>

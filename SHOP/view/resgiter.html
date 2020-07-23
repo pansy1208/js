@@ -1,16 +1,22 @@
 <link rel="stylesheet" href="../css/common.css" />
 <link rel="stylesheet" href="../css/resgiter.css" />
 <link rel="stylesheet" href="../css/font_jrck4v87eg/iconfont.css">
+
 <div class="w">
   <div class="resgiter">
     <form action="">
       <i class="iconfont icon-yonghuming user"></i>
-      <input type="text" placeholder="用户名" />
-      <span>只能包含数字、字母、下划线、汉字6-12位</span>
+      <input type="text" placeholder="用户名" class="username"/>
+      <span class="namewarn">只能包含数字、字母、下划线、汉字6-12位</span>
       <i class="iconfont icon-App_yuechi pwd"></i>
-      <input type="password" placeholder="密码" />
-      <span>密码格式错误</span>
-      <button>登录</button>
+      <input type="password" placeholder="密码" class="password"/>
+      <span class="pwdwarn">只能包含数字、字母、下划线6-12位</span>
+      <button class="btn">注册</button>
     </form>
   </div>
 </div>
+<div class="loading">
+  <img src="../assetes/images/loading.jpg" alt="" />
+</div>
+<script src="../js/resgiter.js"></script>
+<script src="../js/jquery-3.4.0.js"></script>

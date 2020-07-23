@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .wrap {
+        width: 200px;
+        height: 50px;
+        border: 1px solid #ccc;
+        text-align: left;
+        line-height: 50px;
+        font-size: 18px;
+        font-weight: 700;
+        padding-left: 20px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap"></div>
+    <script src="jquery-3.4.0.js"></script>
+    <script>
+      var news = [
+        "不会吧不会吧不会吧",
+        "就这就这就这",
+        "6666666666",
+        "1111111111",
+        "2222222222",
+        "3333333333",
+        "4444444444",
+      ];
+      news.forEach(function (item, index) {
+        $(".wrap").append(`<p>${item}</p>`);
+      });
+
+      setInterval(function () {
+        $("p:first").animate({ marginTop: "-50px" }, 500, function () {
+          // 清空margin-top
+          $("p").css({ marginTop: "0" });
+          $(".wrap").append($("p:first"));
+        });
+      }, 1000);
+    </script>
+  </body>
+</html>

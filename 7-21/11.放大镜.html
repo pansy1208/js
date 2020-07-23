@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="jquery-3.4.0.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .main {
+        width: 600px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .bigImg {
+        width: 470px;
+        height: 313px;
+        position: relative;
+      }
+      .bigImg img {
+        width: 470px;
+        height: 313px;
+        display: none;
+      }
+      .glassView {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        right: -74px;
+        top: 0;
+        overflow: hidden;
+      }
+      .glassView img {
+        width: 940px;
+        height: 626px;
+        display: none;
+      }
+      .smImg {
+        width: 470px;
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .smImg img {
+        width: 150px;
+        height: 100px;
+        opacity: 0.6;
+      }
+      .mark {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        /* opacity: 0.3; */
+        position: absolute;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="glassView">
+        <img src="img/1.jpg" alt="" />
+        <img src="img/2.jpg" alt="" />
+        <img src="img/3.jpg" alt="" />
+      </div>
+      <div class="bigImg">
+        <img src="img/1.jpg" alt="" class="active" />
+        <img src="img/2.jpg" alt="" />
+        <img src="img/3.jpg" alt="" />
+        <div class="mark"></div>
+      </div>
+      <div class="smImg">
+        <img src="img/1.jpg" alt="" />
+        <img src="img/2.jpg" alt="" />
+        <img src="img/3.jpg" alt="" />
+      </div>
+    </div>
+    <script>
+      $(window).ready(function () {
+        var x = 0;
+        $(".bigImg>img:eq(" + x + ")").css({ display: "block" });
+        $(`.smImg>img:eq(${x})`).css({ opacity: 1 });
+        $(".smImg").on("mouseover", "img", function () {
+          $(`.bigImg>img:eq(${x})`).css({ display: "none" });
+          $(`.smImg>img:eq(${x})`).css({ opacity: 0.6 });
+          x = $(this).index();
+          $(".bigImg>img:eq(" + x + ")").css({ display: "block" });
+          $(`.smImg>img:eq(${x})`).css({ opacity: 1 });
+        });
+        $(".bigImg").on("mouseover", "img", function () {
+          $(`.glassView>img:eq(${x})`).css({ display: "none" });
+          x = $(this).index();
+          $(`.glassView>img:eq(${x})`).css({ display: "block" });
+          $(".mark").css({ display: "block" });
+          $(".bigImg").on("mousemove", function (e) {
+        });
+        });
+        
+        $(".bigImg").on("mouseleave", "img", function () {
+          x = $(this).index();
+          $(`.glassView>img:eq(${x})`).css({ display: "none" });
+          $(".mark").css({ display: "none" });
+        });
+      });
+    </script>
+  </body>
+</html>

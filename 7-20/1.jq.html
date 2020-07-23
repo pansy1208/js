@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>就这？？？</div>
+    <script>
+      function $(str) {
+        return new jQuery(str);
+      }
+
+      function jQuery(el) {
+        this.el = document.querySelector(el);
+      }
+      // jQuery的原型对象下的所有属性都可以通过jQuery构造函数所实例化的对象执行直接访问
+      jQuery.prototype = {
+        html: function (str) {
+          this.el.innerHTML = str;
+          return this;
+        },
+        css: function (option) {
+          for (const x in option) {
+            this.el.style[x] = option[x];
+          }
+          return this;
+        },
+      };
+      jQuery.prototype.ajax = function (option) {
+        var xhr = new XMLHttpRequest();
+        var { method, url, async, success, error, data } = option;
+        if (method === "get" || method === "GET") {
+          var url = url + "?";
+          for (const x in data) {
+            url += `${x}=${data[x]}&`;
+          }
+          url = url.slice(0, url.length - 1);
+          xhr.open(method, url, async);
+          xhr.send();
+
+          xhr.onreadystatechange = function () {
+            if (xhr.status === "200" && xhr.readyState === "4") {
+              var res = xhr.response;
+              success(res);
+            } else {
+              error(xhr);
+            }
+          };
+        }
+        if (method === "post" || method === "POST") {
+          var params = "";
+          for (const x in data) {
+            params += `${x}=${data[x]}&`;
+          }
+          params = params.slice(0, params.length - 1);
+          xhr.open(method, url, async);
+          xhr.send(params);
+
+          xhr.onreadystatechange = function () {
+            if (xhr.status === "200" && xhr.readyState === "4") {
+              var res = xhr.response;
+              success(res);
+            } else {
+              error(xhr);
+            }
+          };
+        }
+      };
+      jQuery.prototype.hide = function () {
+        var val = 1;
+        this.el.style.opacity = 1;
+        this.el.timer = setInterval(() => {
+          val -= 0.1;
+          if (val <= 0) {
+            this.el.style.opacity = 0;
+            this.el.style.display = "none";
+            clearInterval(this.el.timer);
+            return;
+          }
+          this.el.style.opacity = val;
+        }, 50);
+        return this;
+      };
+
+      jQuery.prototype.show = function () {
+        var val = 0;
+        this.el.style.display = "block";
+        this.el.style.opacity = val;
+        this.el.timer = setInterval(() => {
+          val += 0.1;
+          if (val >= 1) {
+            this.el.style.opacity = 1;
+            this.el.style.display = "block";
+            clearInterval(this.el.timer);
+            return;
+          }
+          this.el.style.opacity = val;
+        }, 50);
+        return this.el;
+      };
+      $("div").html("!!!").css({ color: "red" }).show();
+      $()
+    </script>
+  </body>
+</html>

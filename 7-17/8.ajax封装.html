@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      ajax({
+        method: "post",
+        data: {
+          page: 1,
+        },
+        url: "www.baidu.com",
+        success: function (data) {
+          console.log(data);
+        },
+        error: function (err) {
+        },
+        async: true,
+      });
+
+      // ajax(option)发送http请求
+      // option|@Object
+      // @method |string get post 表示请求方式
+      // @URL |string 表示请求地址
+      // @data | object 表示请求参数
+      // @success | function 表示请求成功后，如何响应数据
+      // @error | function 表示请求失败，如何处理失败情况
+      // @async | boolean 表示请求的程序是同步还是异步
+      function ajax(option) {
+        // 1 获取需要的数据：方法 地址 参数 callback
+        var xhr = new XMLHttpRequest();
+        var { method, data, url, success, error, async } = option;
+        if (method === "get" || method === "GET") {
+          //发送get请求
+          // 处理请求参数和请求地址
+          url = url + "?";
+          for (const x in data) {
+            url += `${x} =${data[x]} &`;
+          }
+          url = url.slice(0, url.length - 1);
+          xhr.open(method, url, async);
+          xhr.send();
+
+          // 处理响应
+          xhr.onreadystatechange = function () {
+            if (xhr.status === 200 && xhr.readyState === 4) {
+              //请求成功获取响应数据
+              var res = xhr.response;
+              // 请求成功后处理函数
+              success(res);
+            } else {
+              // 请求失败处理函数返回xhr
+              error(xhr);
+            }
+          };
+        }
+
+        if (method === "post" || method === "POST") {
+          var params = "";
+          for (const x in data) {
+            params += `${x}=${data[x]}&`;
+          }
+          params = params.slice(0, params.length - 1);
+          xhr.open(method, url, async);
+          xhr.send(params);
+
+          xhr.onreadystatechange = function () {
+            if (xhr.status === 200 && xhr.readyState === 4) {
+              var res = xhr.response;
+              success(res);
+            } else {
+              error(xhr);
+            }
+          };
+        }
+      }
+    </script>
+  </body>
+</html>

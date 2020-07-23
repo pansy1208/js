@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>滑动动画</button>
+    <div class="box"></div>
+    <script src="jquery-3.4.0.js"></script>
+    <script>
+      $(".box").css({
+        width: "200px",
+        height: "200px",
+        background: "red",
+        display: "none",
+      });
+      // 滑动效果
+      // $("button").on("click", function () {
+      //   $(".box").slideToggle()
+      // });
+
+      // 淡出 淡入
+      $("button").on("click", function () {
+        $(".box").fadeIn(1000, function () {
+          alert("就这???");
+        });
+      });
+    </script>
+  </body>
+</html>

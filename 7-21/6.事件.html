@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>点击</button>
+    <script src="jquery-3.4.0.js"></script>
+    <script>
+      var x = 0;
+      function callFn() {
+        ++x;
+        if (x === 5) {
+          // off(eventName，eventFun)删除事件
+          $("button").off("click", callFn);
+        }
+      }
+      $("button").on("click", callFn);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="box">替换</div>
+      <p>删除</p>
+    </div>
+    <div class="wrapper">
+      <div class="q"></div>
+      <div></div>
+      <div></div>
+    </div>
+    <script src="jquery-3.4.0.js"></script>
+    <script>
+      // 替换 a.replaceWith(b)
+      // 把a替换成b
+      $(".box").replaceWith("<h1>就这？？？</h1>");
+      // 删除
+      // a.empty() 删除a的所有子节点
+      // $(".wrapper").empty();
+
+      $(".q").remove();
+    </script>
+  </body>
+</html>

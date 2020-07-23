@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="jquery-3.4.0.js"></script>
+  </head>
+  <body>
+    <input type="text" />
+    <div class="content">
+    </div>
+    <script>
+      $("input").on("keydown", function (e) {
+        if (e.keyCode === 13) {
+          // val()没参获取有参设置
+          var val = $("input").val();
+          var p = `<p>${val}</p>`;
+          p = $(p).css({ display: "none" });
+          var res = $(".content").append(p);
+          $(p).fadeIn(300, function () {
+            $(p).on("click", function () {
+              // console.log($(this));
+              $(this).fadeOut(500, function () {
+                $(this).remove();
+                console.log(this);
+              });
+            });
+          });
+          $("input").val("");
+
+          // bug $('p') 选中所有p 已经存在p 存在多次绑定同一个事件，导致事件处理函数多次触发
+          // 优化：$(p)只是给当前[插入p]绑定点击事件，保证每一个p只有一个点击事件
+          // 问题：初始化不会被选中 解决：初始化在选中 绑定事件
+          // $('p').on('click',function(){
+
+          // })
+        }
+      });
+    </script>
+  </body>
+</html>
