@@ -1,3 +1,9 @@
+window.parent.parent.document.querySelector("body").style.height = 1400 + "px";
+setTimeout(function () {
+  window.parent.parent.document.querySelector(".loading").style.display =
+    "none";
+}, 300);
+window.parent.parent.document.querySelector(".tabbar").style.display = "none";
 setTimeout(function () {
   var bigImgs = document.querySelectorAll(".bigImg>img");
   var smImgs = document.querySelectorAll(".smImg>img");
@@ -57,7 +63,7 @@ setTimeout(function () {
     glass.style.display = "none";
   });
 }, 200);
-
+var remArr = [];
 var id = sessionStorage.getItem("id");
 window.onload = function () {
   $.ajax({
@@ -69,7 +75,7 @@ window.onload = function () {
     },
     success: function (data) {
       for (let i = 0; i < data.length; i++) {
-        var {imgs, title, price, supplier } = data[i];
+        var { imgs, title, price, supplier } = data[i];
         imgs = JSON.parse(imgs);
         var templateRight = `<div>
         <h2>${title}</h2>
@@ -122,23 +128,30 @@ window.onload = function () {
       type_one: type,
     },
     success: function (data) {
+      var shopdata = [];
+
       for (let i = 0; i < data.length; i++) {
-        if (id != i) {
-          var { img_list_url, mack, price, title } = data[i];
-          var template = `<div class="shopbtm">
-        <div class="shop">
-          <img src="${img_list_url}" alt="" />
-        </div>
-        <div class="title">
-          <h3>${title}</h3>
-        </div>
-        <div class="info">
-          <span class="fl">￥${price}</span>
-          ${mack}
-        </div>
-      </div>`;
-          $(".footer-btm").append(template);
+        if (id != i + 1) {
+          shopdata.push(data[i]);
         }
+      }
+      for (let i = 0; i < 10; i++) {
+        var num = Math.floor(Math.random() * shopdata.length);
+        var { img_list_url, mack, price, title } = shopdata[num];
+        remArr.push(shopdata[num]);
+        var template = `<div class="shopbtm">
+      <div class="shop">
+        <img src="${img_list_url}" alt="" />
+      </div>
+      <div class="title">
+        <h3>${title}</h3>
+      </div>
+      <div class="info">
+        <span class="fl">￥${price}</span>
+        ${mack}
+      </div>
+    </div>`;
+        $(".footer-btm").append(template);
       }
     },
     error: function (err) {
@@ -150,4 +163,26 @@ window.onload = function () {
 var back = document.querySelector(".back");
 back.addEventListener("click", function () {
   window.parent.document.querySelector("#bottom").src = "view/home.html";
+  window.parent.parent.document.querySelector("body").style.height =
+    1600 + "px";
+  var tabli = window.parent.parent.document.querySelectorAll(".leftScroll>li");
+  for (let i = 0; i < tabli.length; i++) {
+    tabli[i].parentNode.removeChild(tabli[i]);
+  }
+  window.parent.parent.document.querySelector(".tabbar").style.display = "none";
+  window.parent.parent.document.querySelector(".loading").style.display =
+    "block";
 });
+
+setTimeout(function () {
+  var shoplist = localStorage.getItem("shoplist");
+  shoplist = JSON.parse(shoplist);
+  var shopbtm = document.querySelectorAll(".shopbtm");
+  for (let i = 0; i < remArr.length; i++) {
+    shopbtm[i].addEventListener("click", function () {
+      window.parent.document.querySelector("#bottom").src = "view/detail.html";
+      sessionStorage.setItem("id", remArr[i].Id);
+      sessionStorage.setItem("typeone", remArr[i].type_one);
+    });
+  }
+}, 200);

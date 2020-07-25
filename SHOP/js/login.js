@@ -45,7 +45,9 @@ btn.addEventListener("click", function (e) {
             self.parent.frames[0].dl.innerHTML = "购物车";
             self.parent.frames[0].zc.innerHTML = "退出登录";
             var lis = self.parent.frames[0].lis;
-            lis[1].children[0].href='shopcar.html'
+            lis[1].children[0].href = "shopcar.html";
+            window.parent.parent.document.querySelector("body").style.height =
+              1600 + "px";
             for (let i = 0; i < lis.length; i++) {
               lis[i].classList.remove("active");
             }

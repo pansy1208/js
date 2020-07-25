@@ -1,3 +1,8 @@
+setTimeout(function () {
+  window.parent.parent.document.querySelector(".loading").style.display =
+    "none";
+}, 100);
+
 window.addEventListener("load", function () {
   var shoplist = localStorage.getItem("shoplist");
 
@@ -100,6 +105,8 @@ var shop = document.querySelector(".shopmore").children;
 setTimeout(function () {
   for (let i = 0; i < shop.length; i++) {
     shop[i].addEventListener("click", function () {
+      window.parent.parent.document.querySelector(".loading").style.display =
+        "block";
       window.parent.document.querySelector("#bottom").src = "view/detail.html";
       window.parent.parent.document.documentElement.scrollTop = 0;
       var shopInfo = localStorage.getItem("shoplist");
@@ -113,6 +120,11 @@ setTimeout(function () {
 var namelist = document.querySelectorAll(".bar>ul>li");
 namelist.forEach(function (item, index) {
   item.addEventListener("click", function () {
+    var load = window.parent.parent.document.querySelector(".loading");
+    load.style.display = "block";
+    setTimeout(function () {
+      load.style.display = "none";
+    }, 500);
     for (let i = 0; i < namelist.length; i++) {
       namelist[i].classList.remove("active");
     }

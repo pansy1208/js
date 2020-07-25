@@ -27,34 +27,7 @@ h3 {
   width: 100%;
   text-align: center;
 }
-.tabbar {
-  width: 122px;
-  border: 1px solid purple;
-  position: fixed;
-  top:150px;
-  left: 10px;
-  border-radius: 5px;
-  text-align: center;
-  padding: 10px;
-}
-.tabbar li {
-  width: 100px;
-  height: 30px;
-  line-height: 30px;
-  
-}
-li:hover {
-  font-weight: 700;
-  color: purple;
-  /* background-color: purple; */
-  border-radius: 100px;
-  /* opacity: 0.2; */
-}
-.leftactive {
-  font-weight: 700;
-  color: purple;
-}
-.active{
+.active {
   background-color: purple;
   border-radius: 15px;
-}
+} 
